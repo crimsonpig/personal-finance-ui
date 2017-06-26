@@ -5,7 +5,7 @@ export class PersonalFinanceUiPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
+  getMainPageHeader() {
     return element(by.css('app-root h1')).getText();
   }
 }
