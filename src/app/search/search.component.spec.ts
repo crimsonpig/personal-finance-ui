@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormsModule } from '@angular/forms';
+
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
@@ -8,7 +10,8 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      declarations: [ SearchComponent ], 
+      imports: [ FormsModule ]
     })
     .compileComponents();
   }));
@@ -23,20 +26,22 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain search criteria with start date and end date resulting in the current month', async() => {
+  it('should have search criteria with start date of the first day of the month and end date of the last day of the month', async() => {
     const criteria = component.searchCriteria;
-    const today = new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const lastDayOfMonth = new Date(year, month+1, 0).getDate();
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth();
+    let lastDayOfMonth = new Date(year, month+1, 0).getDate();
+    let actualMonth = month+1;
+    let monthString = actualMonth < 10 ? '0'+actualMonth : ''+actualMonth; 
+    let expectedStartDate = year + '-' + monthString + '-01';
+    let expectedEndDate = year + '-' + monthString + '-' + lastDayOfMonth;
+
 
     expect(criteria.category).toEqual('');
-    expect(criteria.startDate.getDate()).toEqual(1);
-    expect(criteria.startDate.getMonth()).toEqual(month);
-    expect(criteria.startDate.getFullYear()).toEqual(year);
+    expect(criteria.startDate).toEqual(expectedStartDate);
+    expect(criteria.endDate).toEqual(expectedEndDate);
 
-    expect(criteria.endDate.getDate()).toEqual(lastDayOfMonth);
-    expect(criteria.endDate.getMonth()).toEqual(month);
-    expect(criteria.endDate.getFullYear()).toEqual(year);
   });
+
 });

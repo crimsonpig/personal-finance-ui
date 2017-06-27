@@ -20,11 +20,16 @@ export class SearchComponent implements OnInit {
     let today: Date = new Date();
     let year = today.getFullYear();
     let month = today.getMonth();
+    let monthString = this.padZero(month+1);
+    let lastDayOfMonth = new Date(year, month+1, 0).getDate();
     this.searchCriteria = new SearchCriteria();
     this.searchCriteria.category = '';
-    this.searchCriteria.startDate = new Date(year, month, 1);
-    this.searchCriteria.endDate = new Date(year, month+1, 0);
+    this.searchCriteria.startDate = year + '-' + monthString + '-01';
+    this.searchCriteria.endDate = year + '-' + monthString + '-' + lastDayOfMonth;
+  }
 
+  padZero(datePart: number): string {
+    return (datePart < 10) ? '0' + datePart : datePart+'';
   }
 
 }
