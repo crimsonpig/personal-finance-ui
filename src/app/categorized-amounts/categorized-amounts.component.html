@@ -1,0 +1,15 @@
+<h3>{{parentCategory}}</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+        </tr>    
+    </thead>
+    <tbody>
+        <tr *ngFor="let categorizedAmount of categorizedAmounts">
+            <td>{{categorizedAmount.category}}</td>
+            <td>{{categorizedAmount.amount}}</td>
+        </tr>
+    </tbody>
+</table>

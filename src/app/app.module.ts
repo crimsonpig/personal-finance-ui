@@ -12,6 +12,7 @@ import { BudgetSummaryComponent } from './budget-summary/budget-summary.componen
 import { CompareComponent } from './compare/compare.component';
 import { TransactionCrudComponent } from './transaction-crud/transaction-crud.component';
 import { BudgetCrudComponent } from './budget-crud/budget-crud.component';
+import { CategorizedAmountsComponent } from './categorized-amounts/categorized-amounts.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BudgetCrudComponent } from './budget-crud/budget-crud.component';
     BudgetSummaryComponent,
     CompareComponent,
     TransactionCrudComponent,
-    BudgetCrudComponent
+    BudgetCrudComponent,
+    CategorizedAmountsComponent
   ],
   imports: [
     BrowserModule,
