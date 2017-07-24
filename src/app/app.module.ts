@@ -4,11 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
+import { NavmenuComponent } from './navmenu/navmenu.component';
+import { TransactionSummaryComponent } from './transaction-summary/transaction-summary.component';
+import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    NavmenuComponent,
+    TransactionSummaryComponent,
+    BudgetSummaryComponent
   ],
   imports: [
     BrowserModule,
