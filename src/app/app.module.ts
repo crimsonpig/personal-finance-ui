@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
@@ -18,7 +20,8 @@ import { BudgetSummaryComponent } from './budget-summary/budget-summary.componen
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
