@@ -7,8 +7,8 @@ describe('personal-finance-ui App', () => {
     page = new PersonalFinanceUiPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display main heading "Personal Finance Application"', () => {
     page.navigateTo();
-    expect(page.getMainPageHeader()).toEqual('Welcome to app!!');
+    expect(page.getMainPageHeader()).toEqual('Personal Finance Application');
   });
 });
