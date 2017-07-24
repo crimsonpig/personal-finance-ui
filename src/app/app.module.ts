@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { TransactionSummaryComponent } from './transaction-summary/transaction-summary.component';
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
+import { CompareComponent } from './compare/compare.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BudgetSummaryComponent } from './budget-summary/budget-summary.componen
     SearchComponent,
     NavmenuComponent,
     TransactionSummaryComponent,
-    BudgetSummaryComponent
+    BudgetSummaryComponent,
+    CompareComponent
   ],
   imports: [
     BrowserModule,
