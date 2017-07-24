@@ -11,6 +11,7 @@ import { TransactionSummaryComponent } from './transaction-summary/transaction-s
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
 import { CompareComponent } from './compare/compare.component';
 import { TransactionCrudComponent } from './transaction-crud/transaction-crud.component';
+import { BudgetCrudComponent } from './budget-crud/budget-crud.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TransactionCrudComponent } from './transaction-crud/transaction-crud.co
     TransactionSummaryComponent,
     BudgetSummaryComponent,
     CompareComponent,
-    TransactionCrudComponent
+    TransactionCrudComponent,
+    BudgetCrudComponent
   ],
   imports: [
     BrowserModule,
