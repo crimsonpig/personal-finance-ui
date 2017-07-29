@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TransactionItem } from './transactionitem';
+
 @Component({
   selector: 'app-transaction-crud',
   templateUrl: './transaction-crud.component.html',
