@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+td {
+    text-transform: uppercase;
+}
+
+nav {
+    border-collapse: none;
+    padding: 20px 0px;
+    margin: 10px 0px;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+a:hover, a.active {
+    background-color: #AAAAAA;
+}
+
+body {
+    margin: 1em;
+    padding: 1em;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead, th, tbody, td {
+    box-shadow: 1px 1px 1px 1px grey;
+    padding: 4px;
+}
+
+* {
+    background-color: #CCCCCC;
+    box-shadow: 1em;
+    font-family: sans-serif;
+    font-weight: normal;
+    color: black;
+}
