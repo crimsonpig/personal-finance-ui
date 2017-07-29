@@ -10,7 +10,7 @@ import { ComparisonAmount } from './comparisonamount';
 export class CompareComponent implements OnInit {
 
   incomeComparisons: ComparisonAmount[] = [
-    { category: 'PAYCHECK', expectedAmount: 5000.22, actualAmount: 2500.11, difference: 2500.11 }
+    { category: 'paycheck', expectedAmount: 5000.22, actualAmount: 2500.11, difference: 2500.11 }
   ];
   expenseComparisons: ComparisonAmount[] = [
     { category: 'GAS', expectedAmount: 150, actualAmount: 50.00, difference: 100.00 },

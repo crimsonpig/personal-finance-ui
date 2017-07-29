@@ -10,7 +10,7 @@ import { CategorizedAmount } from '../categorizedamount';
 export class BudgetSummaryComponent implements OnInit {
 
   incomes: CategorizedAmount[] = [
-    { category: 'PAYCHECK', amount: 5000.22 },
+    { category: 'Paycheck', amount: 5000.22 },
     { category: 'CREDIT CARD REWARDS', amount: 125 }
   ];
 

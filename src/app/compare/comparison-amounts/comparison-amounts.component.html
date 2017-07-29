@@ -10,10 +10,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let comparisonAmount of comparisonAmounts">
-            <td>{{comparisonAmount.category}}</td>
-            <td>{{comparisonAmount.expectedAmount}}</td>
-            <td>{{comparisonAmount.actualAmount}}</td>
-            <td>{{comparisonAmount.difference}}</td>
+            <td>{{comparisonAmount.category | uppercase}}</td>
+            <td>{{comparisonAmount.expectedAmount | number:'1.2-2'}}</td>
+            <td>{{comparisonAmount.actualAmount | number:'1.2-2'}}</td>
+            <td>{{comparisonAmount.difference | number:'1.2-2'}}</td>
         </tr>
     </tbody>
 </table>

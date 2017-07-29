@@ -8,8 +8,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let categorizedAmount of categorizedAmounts">
-            <td>{{categorizedAmount.category}}</td>
-            <td>{{categorizedAmount.amount}}</td>
+            <td>{{categorizedAmount.category | uppercase}}</td>
+            <td>{{categorizedAmount.amount | number:'1.2-2'}}</td>
         </tr>
     </tbody>
 </table>

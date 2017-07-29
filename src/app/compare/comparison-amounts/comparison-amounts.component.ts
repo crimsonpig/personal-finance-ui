@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { DecimalPipe, UpperCasePipe } from '@angular/common';
+
 import { ComparisonAmount } from '../comparisonamount';
 
 @Component({
