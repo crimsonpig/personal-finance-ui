@@ -1,15 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-td {
+th {
     color: #FF00FF;
+}
+
+nav {
+    margin: 10px 0px;
 }
 
 h3 {
     color: #00FFFF;
 }
 
+input {
+    outline: 0;
+    border-width: 0 0 thin 0;
+    border-color: yellow;
+}
+
 * {
   font-family: Lucida Console, Monaco, monospace;
   text-transform: uppercase;
+  text-decoration: none;
+  font-weight: normal;
   background-color: black;
   color: #00FF00;
 }
