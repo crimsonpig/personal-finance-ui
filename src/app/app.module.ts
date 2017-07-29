@@ -14,6 +14,7 @@ import { TransactionCrudComponent } from './transaction-crud/transaction-crud.co
 import { BudgetCrudComponent } from './budget-crud/budget-crud.component';
 import { CategorizedAmountsComponent } from './categorized-amounts/categorized-amounts.component';
 import { ComparisonAmountsComponent } from './compare/comparison-amounts/comparison-amounts.component';
+import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-crud-entries/transaction-crud-entries.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ComparisonAmountsComponent } from './compare/comparison-amounts/compari
     TransactionCrudComponent,
     BudgetCrudComponent,
     CategorizedAmountsComponent,
-    ComparisonAmountsComponent
+    ComparisonAmountsComponent,
+    TransactionCrudEntriesComponent
   ],
   imports: [
     BrowserModule,

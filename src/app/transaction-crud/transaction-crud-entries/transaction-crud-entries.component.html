@@ -1,0 +1,28 @@
+<h3>{{parentCategory}}</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
+        </tr>    
+    </thead>
+    <tbody>
+        <tr *ngFor="let newTransactionItem of newTransactionItems">
+            <td>
+                <input [(ngModel)]="newTransactionItem.tDate">
+            </td>
+            <td>
+                <input [(ngModel)]="newTransactionItem.category">
+            </td>
+            <td>
+                <input [(ngModel)]="newTransactionItem.amount">
+            </td>
+        </tr>
+        <tr *ngFor="let transactionItem of transactionItems">
+            <td>{{transactionItem.tDate}}</td>
+            <td>{{transactionItem.category | uppercase}}</td>
+            <td>{{transactionItem.amount | number:'1.2-2'}}</td>
+        </tr>
+    </tbody>
+</table>
