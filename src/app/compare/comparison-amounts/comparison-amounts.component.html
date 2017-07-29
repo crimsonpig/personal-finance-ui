@@ -1,0 +1,19 @@
+<h3>{{parentCategory}}</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Expected Amount</th>
+            <th>Actual Amount</th>
+            <th>Difference</th>
+        </tr>    
+    </thead>
+    <tbody>
+        <tr *ngFor="let comparisonAmount of comparisonAmounts">
+            <td>{{comparisonAmount.category}}</td>
+            <td>{{comparisonAmount.expectedAmount}}</td>
+            <td>{{comparisonAmount.actualAmount}}</td>
+            <td>{{comparisonAmount.difference}}</td>
+        </tr>
+    </tbody>
+</table>

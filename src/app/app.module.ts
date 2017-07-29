@@ -13,6 +13,7 @@ import { CompareComponent } from './compare/compare.component';
 import { TransactionCrudComponent } from './transaction-crud/transaction-crud.component';
 import { BudgetCrudComponent } from './budget-crud/budget-crud.component';
 import { CategorizedAmountsComponent } from './categorized-amounts/categorized-amounts.component';
+import { ComparisonAmountsComponent } from './compare/comparison-amounts/comparison-amounts.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CategorizedAmountsComponent } from './categorized-amounts/categorized-a
     CompareComponent,
     TransactionCrudComponent,
     BudgetCrudComponent,
-    CategorizedAmountsComponent
+    CategorizedAmountsComponent,
+    ComparisonAmountsComponent
   ],
   imports: [
     BrowserModule,
