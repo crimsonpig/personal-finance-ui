@@ -33,4 +33,11 @@ export class TransactionCrudEntriesComponent implements OnInit {
     this.newTransactionItems.splice(idx, 1);
   }
 
+  removeExistingItem(itemToRemove: TransactionItem){
+    if(confirm('Are you sure you want to delete this item?')){
+        const idx: number = this.transactionItems.indexOf(itemToRemove);
+        this.transactionItems.splice(idx, 1);
+    }
+  }
+
 }

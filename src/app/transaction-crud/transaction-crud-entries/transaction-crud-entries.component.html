@@ -30,7 +30,9 @@
             <td>{{transactionItem.tDate}}</td>
             <td>{{transactionItem.category | uppercase}}</td>
             <td>{{transactionItem.amount | number:'1.2-2'}}</td>
-            <td></td>
+            <td>
+                <button (click)="removeExistingItem(transactionItem)">x</button>
+            </td>
         </tr>
     </tbody>
 </table>
