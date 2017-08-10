@@ -18,4 +18,19 @@ export class TransactionCrudEntriesComponent implements OnInit {
   ngOnInit() {
   }
 
+  addNewItem(){
+    this.newTransactionItems.push(new TransactionItem());
+  }
+
+  saveNewItem(itemToSave: TransactionItem){
+    //Call backend web-service IRL
+    this.transactionItems.push(itemToSave);
+    this.removeNewItem(itemToSave);
+  }
+
+  removeNewItem(itemToRemove: TransactionItem){
+    const idx: number = this.newTransactionItems.indexOf(itemToRemove);
+    this.newTransactionItems.splice(idx, 1);
+  }
+
 }
