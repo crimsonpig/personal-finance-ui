@@ -33,6 +33,30 @@ export class TransactionCrudEntriesComponent implements OnInit {
     this.newTransactionItems.splice(idx, 1);
   }
 
+  ascendingOrder: boolean = true;
+  lastSortCategory: string = '';
+
+  sortItems(sortField: string){
+    if(sortField != this.lastSortCategory){
+        this.ascendingOrder = true;
+    }
+
+    this.transactionItems.sort((a: TransactionItem, b: TransactionItem) => {
+        if(a[sortField] < b[sortField]){
+            return -1;
+        } else if (a[sortField] > b[sortField]){
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    if(!this.ascendingOrder){
+        this.transactionItems.reverse();
+    }
+    this.ascendingOrder = !this.ascendingOrder;
+    this.lastSortCategory = sortField;
+  }
+
   removeExistingItem(itemToRemove: TransactionItem){
     if(confirm('Are you sure you want to delete this item?')){
         const idx: number = this.transactionItems.indexOf(itemToRemove);
