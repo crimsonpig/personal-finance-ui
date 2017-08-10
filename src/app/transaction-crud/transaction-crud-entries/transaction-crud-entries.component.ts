@@ -34,10 +34,10 @@ export class TransactionCrudEntriesComponent implements OnInit {
   }
 
   ascendingOrder: boolean = true;
-  lastSortCategory: string = '';
+  lastSortField: string = '';
 
   sortItems(sortField: string){
-    if(sortField != this.lastSortCategory){
+    if(sortField != this.lastSortField){
         this.ascendingOrder = true;
     }
 
@@ -54,7 +54,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
         this.transactionItems.reverse();
     }
     this.ascendingOrder = !this.ascendingOrder;
-    this.lastSortCategory = sortField;
+    this.lastSortField = sortField;
   }
 
   removeExistingItem(itemToRemove: TransactionItem){
