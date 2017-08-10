@@ -1,0 +1,43 @@
+<h3>{{parentCategory}}</h3>
+<table>
+    <thead>
+        <tr>
+            <th (click)="sortItems('startDate')">Start Date</th>
+            <th (click)="sortItems('startDate')">End Date</th>
+            <th (click)="sortItems('category')">Category</th>
+            <th (click)="sortItems('amount')">Amount</th>
+            <th>
+                <button (click)="addNewItem()">Add</button>
+            </th>
+        </tr>    
+    </thead>
+    <tbody>
+        <tr *ngFor="let newBudgetItem of newBudgetItems">
+            <td>
+                <input [(ngModel)]="newBudgetItem.startDate">
+            </td>
+            <td>
+                <input [(ngModel)]="newBudgetItem.endDate">
+            </td>
+            <td>
+                <input [(ngModel)]="newBudgetItem.category">
+            </td>
+            <td>
+                <input [(ngModel)]="newBudgetItem.amount">
+            </td>
+            <td>
+                <button (click)="saveNewItem(newBudgetItem)">Save</button>
+                <button (click)="removeNewItem(newBudgetItem)">Cancel</button>
+            </td>
+        </tr>
+        <tr *ngFor="let budgetItem of budgetItems">
+            <td>{{budgetItem.startDate}}</td>
+            <td>{{budgetItem.endDate}}</td>
+            <td>{{budgetItem.category | uppercase}}</td>
+            <td>{{budgetItem.amount | number:'1.2-2'}}</td>
+            <td>
+                <button (click)="removeExistingItem(budgetItem)">x</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
