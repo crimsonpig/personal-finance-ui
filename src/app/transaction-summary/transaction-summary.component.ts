@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { CategorizedAmount } from '../categorizedamount';
 
+import { TransactionSummary } from '../domain/transactionsummary';
+import { TransactionSummaryService } from './transaction-summary.service';
+
+
 @Component({
   selector: 'app-transaction-summary',
   templateUrl: './transaction-summary.component.html',
@@ -9,19 +13,23 @@ import { CategorizedAmount } from '../categorizedamount';
 })
 export class TransactionSummaryComponent implements OnInit {
 
-  incomes: CategorizedAmount[] = [
-    { category: 'PAYCHECK', amount: 2500.20 },
-    { category: 'CREDIT CARD REWARDS', amount: 125 }
-  ];
+  incomes: CategorizedAmount[] = [];
 
-  expenses: CategorizedAmount[] = [
-    { category: 'HOUSEHOLD', amount: 9.95 },
-    { category: 'GAS', amount: 73.52 }
-  ];
+  expenses: CategorizedAmount[] = [];
 
-  constructor() { }
+  constructor(private summaryService: TransactionSummaryService) { }
+
+  getSummary(): void {
+   this.summaryService.getTransactionSummary().then(transactionSummary => {    
+       console.log(transactionSummary);
+       this.incomes = transactionSummary.incomes;
+       this.expenses = transactionSummary.expenses;
+    });
+  }
 
   ngOnInit() {
+    this.getSummary();
+
   }
 
 }

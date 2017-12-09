@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -8,6 +9,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { TransactionSummaryComponent } from './transaction-summary/transaction-summary.component';
+import { TransactionSummaryService } from './transaction-summary/transaction-summary.service';
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
 import { CompareComponent } from './compare/compare.component';
 import { TransactionCrudComponent } from './transaction-crud/transaction-crud.component';
@@ -35,9 +37,10 @@ import { BudgetCrudEntriesComponent } from './budget-crud/budget-crud-entries/bu
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ TransactionSummaryService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
