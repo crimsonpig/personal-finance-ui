@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { NavmenuComponent } from './navmenu/navmenu.component';
+import { SearchService } from './search/search.service';
 import { TransactionSummaryComponent } from './transaction-summary/transaction-summary.component';
 import { TransactionSummaryService } from './transaction-summary/transaction-summary.service';
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
@@ -40,7 +41,9 @@ import { BudgetCrudEntriesComponent } from './budget-crud/budget-crud-entries/bu
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ TransactionSummaryService ],
+  providers: [ 
+    TransactionSummaryService,
+    SearchService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

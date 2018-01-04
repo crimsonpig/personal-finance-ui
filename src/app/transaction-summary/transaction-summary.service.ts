@@ -10,12 +10,13 @@ import 'rxjs/add/operator/toPromise';
 export class TransactionSummaryService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private transactionSummaryUrl = 'http://localhost:8080/reports/transactions?endDt=2017-12-31&startDt=2017-12-01';
+  private transactionSummaryUrl = 'http://localhost:8080/reports/transactions';
 
   constructor(private http: Http) {}
 
-  getTransactionSummary(): Promise<TransactionSummary> {
-    return this.http.get(this.transactionSummaryUrl)
+  getTransactionSummary(searchCriteria: SearchCriteria): Promise<TransactionSummary> {
+    const url = `${this.transactionSummaryUrl}?endDt=${searchCriteria.endDate}&startDt=${searchCriteria.startDate}`;
+    return this.http.get(url)
         .toPromise()
         .then(response => 
             response.json() as TransactionSummary

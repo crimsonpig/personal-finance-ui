@@ -5,6 +5,7 @@ import { CategorizedAmount } from '../categorizedamount';
 import { TransactionSummary } from '../domain/transactionsummary';
 import { TransactionSummaryService } from './transaction-summary.service';
 
+import { SearchService } from '../search/search.service';
 
 @Component({
   selector: 'app-transaction-summary',
@@ -17,10 +18,11 @@ export class TransactionSummaryComponent implements OnInit {
 
   expenses: CategorizedAmount[] = [];
 
-  constructor(private summaryService: TransactionSummaryService) { }
+  constructor(private summaryService: TransactionSummaryService,
+        private searchService: SearchService) { }
 
   getSummary(): void {
-   this.summaryService.getTransactionSummary().then(transactionSummary => {    
+   this.summaryService.getTransactionSummary(this.searchService.getSearchCriteria()).then(transactionSummary => {    
        console.log(transactionSummary);
        this.incomes = transactionSummary.incomes;
        this.expenses = transactionSummary.expenses;

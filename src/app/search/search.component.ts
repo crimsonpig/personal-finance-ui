@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SearchCriteria} from '../searchcriteria';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-search',
@@ -10,10 +11,11 @@ import { SearchCriteria} from '../searchcriteria';
 export class SearchComponent implements OnInit {
   searchCriteria: SearchCriteria;
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
     this.instantiateSearchCriteria();
+    this.doSearch();
   }
 
   instantiateSearchCriteria(): void {
@@ -32,4 +34,7 @@ export class SearchComponent implements OnInit {
     return (datePart < 10) ? '0' + datePart : datePart+'';
   }
 
+  doSearch(): void {
+    this.searchService.setSearchCriteria(this.searchCriteria);
+  }
 }
