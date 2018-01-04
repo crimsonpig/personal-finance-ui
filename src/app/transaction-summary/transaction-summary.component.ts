@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CategorizedAmount } from '../categorizedamount';
+import { SearchCriteria } from '../searchcriteria';
 
 import { TransactionSummary } from '../domain/transactionsummary';
 import { TransactionSummaryService } from './transaction-summary.service';
@@ -14,6 +15,8 @@ import { SearchService } from '../search/search.service';
 })
 export class TransactionSummaryComponent implements OnInit {
 
+  searchCriteria: SearchCriteria;
+
   incomes: CategorizedAmount[] = [];
 
   expenses: CategorizedAmount[] = [];
@@ -22,7 +25,7 @@ export class TransactionSummaryComponent implements OnInit {
         private searchService: SearchService) { }
 
   getSummary(): void {
-   this.summaryService.getTransactionSummary(this.searchService.getSearchCriteria()).then(transactionSummary => {    
+   this.summaryService.getTransactionSummary(this.searchCriteria).then(transactionSummary => {    
        console.log(transactionSummary);
        this.incomes = transactionSummary.incomes;
        this.expenses = transactionSummary.expenses;
@@ -30,8 +33,9 @@ export class TransactionSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchCriteria = this.searchService.searchCriteria;
     this.getSummary();
-
+    
   }
 
 }

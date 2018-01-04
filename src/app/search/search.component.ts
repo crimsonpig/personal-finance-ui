@@ -35,6 +35,6 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch(): void {
-    this.searchService.setSearchCriteria(this.searchCriteria);
+    this.searchService.searchCriteria = this.searchCriteria;
   }
 }

@@ -9,12 +9,4 @@ export class SearchService {
 
   constructor() { }
 
-  setSearchCriteria(newSearchCriteria: SearchCriteria){
-    this.searchCriteria = newSearchCriteria;
-  }
-
-  getSearchCriteria(): SearchCriteria {
-    return this.searchCriteria;
-  }
-
 }
