@@ -34,7 +34,8 @@ export class SearchComponent implements OnInit {
     return (datePart < 10) ? '0' + datePart : datePart+'';
   }
 
-  doSearch(): void {
-    this.searchService.searchCriteria = this.searchCriteria;
+  doSearch() {
+    this.searchService.doSearch(this.searchCriteria);
   }
+
 }
