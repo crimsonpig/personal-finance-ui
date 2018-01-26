@@ -19,6 +19,13 @@ export class CategorizedAmountsComponent implements OnInit {
   ngOnInit() {
   }
 
+  getTotal() {
+    return this.categorizedAmounts
+        .map(categorizedAmount => categorizedAmount.amount)
+        .reduce((sum, current) => sum + current, 0)
+        .toFixed(2);
+  }
+
   ascendingOrder: boolean = true;
   lastSortField: string = '';
 
