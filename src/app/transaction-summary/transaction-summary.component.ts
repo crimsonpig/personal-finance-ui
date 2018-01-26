@@ -28,17 +28,13 @@ export class TransactionSummaryComponent implements OnInit {
 
   getSummary(): void {
    this.summaryService.getTransactionSummary(this.searchCriteria).then(transactionSummary => {    
-       console.log(transactionSummary);
        this.incomes = transactionSummary.incomes;
        this.expenses = transactionSummary.expenses;
     });
   }
 
   ngOnInit() {
-    
     this.searchService.searchCriteriaSubject.subscribe((value) => {this.searchCriteria = value; this.getSummary();});
-    console.log("Loaded transaction-summary");
-    
   }
 
 }

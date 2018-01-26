@@ -11,10 +11,7 @@ export class SearchService {
   searchCriteriaSubject: BehaviorSubject<SearchCriteria>;
 
   constructor() { 
-
-    console.log('constructing search service');
     this.searchCriteriaSubject = new BehaviorSubject<SearchCriteria>(this.instantiateSearchCriteria());
-
   }
 
   instantiateSearchCriteria(): SearchCriteria {
@@ -35,9 +32,7 @@ export class SearchService {
   }
 
   doSearch(newSearchCriteria: SearchCriteria): void {
-    console.log('Old Search Criteria ');
     this.searchCriteriaSubject.next(newSearchCriteria);
-    console.log('New Search Criteria');
   }
 
 }

@@ -24,7 +24,6 @@ export class TransactionSummaryService {
         .catch(error => {
             console.error('An error occurred', error);            
             Promise.reject(error.message || error);
-
         });
   }
 
