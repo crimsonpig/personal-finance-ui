@@ -14,28 +14,10 @@ export class SearchComponent implements OnInit {
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {
-    this.instantiateSearchCriteria();
-    this.doSearch();
-  }
-
-  instantiateSearchCriteria(): void {
-    let today: Date = new Date();
-    let year = today.getFullYear();
-    let month = today.getMonth();
-    let monthString = this.padZero(month+1);
-    let lastDayOfMonth = new Date(year, month+1, 0).getDate();
-    this.searchCriteria = new SearchCriteria();
-    this.searchCriteria.category = '';
-    this.searchCriteria.startDate = year + '-' + monthString + '-01';
-    this.searchCriteria.endDate = year + '-' + monthString + '-' + lastDayOfMonth;
-  }
-
-  padZero(datePart: number): string {
-    return (datePart < 10) ? '0' + datePart : datePart+'';
+    this.searchCriteria = this.searchService.searchCriteriaSubject.value;
   }
 
   doSearch() {
-    this.searchCriteria.category = '';
     this.searchService.doSearch(this.searchCriteria);
   }
 
