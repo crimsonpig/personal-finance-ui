@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 
 import { SearchCriteria } from '../searchcriteria';
 
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class SearchService {
 
-  searchCriteria: Subject<SearchCriteria>;
+    
+  searchCriteriaSubject: BehaviorSubject<SearchCriteria>;
 
   constructor() { 
 
     console.log('constructing search service');
-    this.searchCriteria = new Subject<SearchCriteria>();
-    this.searchCriteria.next(this.instantiateSearchCriteria());
+    this.searchCriteriaSubject = new BehaviorSubject<SearchCriteria>(this.instantiateSearchCriteria());
+
   }
 
   instantiateSearchCriteria(): SearchCriteria {
@@ -35,11 +36,8 @@ export class SearchService {
 
   doSearch(newSearchCriteria: SearchCriteria): void {
     console.log('Old Search Criteria ');
-    console.log(this.searchCriteria);
-
-    this.searchCriteria.next(newSearchCriteria);
+    this.searchCriteriaSubject.next(newSearchCriteria);
     console.log('New Search Criteria');
-    console.log(newSearchCriteria);
   }
 
 }

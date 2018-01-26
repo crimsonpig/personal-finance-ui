@@ -8,6 +8,8 @@ import { TransactionSummaryService } from './transaction-summary.service';
 
 import { SearchService } from '../search/search.service';
 
+import { Subject } from 'rxjs/Subject';
+
 @Component({
   selector: 'app-transaction-summary',
   templateUrl: './transaction-summary.component.html',
@@ -33,8 +35,9 @@ export class TransactionSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchCriteria = this.searchService.searchCriteria;
-    this.getSummary();
+    
+    this.searchService.searchCriteriaSubject.subscribe((value) => {this.searchCriteria = value; this.getSummary();});
+    console.log("Loaded transaction-summary");
     
   }
 
