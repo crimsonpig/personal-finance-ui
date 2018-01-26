@@ -34,7 +34,10 @@ export class TransactionSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchService.searchCriteriaSubject.subscribe((value) => {this.searchCriteria = value; this.getSummary();});
+    this.searchService.searchCriteriaSubject.subscribe((newSearchCriteria) => {
+        this.searchCriteria = newSearchCriteria;
+        this.getSummary();
+    });
   }
 
 }
