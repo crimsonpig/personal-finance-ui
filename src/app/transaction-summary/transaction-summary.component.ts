@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CategorizedAmount } from '../categorizedamount';
+import { CategorizedAmounts } from '../categorizedamounts';
 import { SearchCriteria } from '../searchcriteria';
 
 import { TransactionSummary } from '../domain/transactionsummary';
@@ -19,17 +20,25 @@ export class TransactionSummaryComponent implements OnInit {
 
   searchCriteria: SearchCriteria;
 
-  incomes: CategorizedAmount[] = [];
+  incomes: CategorizedAmounts;
 
-  expenses: CategorizedAmount[] = [];
+  expenses: CategorizedAmounts;
 
   constructor(private summaryService: TransactionSummaryService,
         private searchService: SearchService) { }
 
   getSummary(): void {
-   this.summaryService.getTransactionSummary(this.searchCriteria).then(transactionSummary => {    
-       this.incomes = transactionSummary.incomes;
-       this.expenses = transactionSummary.expenses;
+   this.summaryService.getTransactionSummary(this.searchCriteria).then(transactionSummary => {
+       let theIncomes = new CategorizedAmounts();
+       theIncomes.categorizedAmounts = transactionSummary.incomes;
+       theIncomes.total = transactionSummary.incomesTotal;
+       theIncomes.parentCategory = "Incomes";
+       let theExpenses = new CategorizedAmounts();
+       theExpenses.categorizedAmounts = transactionSummary.expenses;
+       theExpenses.total = transactionSummary.expensesTotal; 
+       theExpenses.parentCategory = "Expenses";
+       this.incomes = theIncomes;
+       this.expenses = theExpenses;
     });
   }
 

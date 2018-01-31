@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DecimalPipe, UpperCasePipe } from '@angular/common';
 
 import { CategorizedAmount } from '../categorizedamount';
+import { CategorizedAmounts } from '../categorizedamounts';
 
 @Component({
   selector: 'app-categorized-amounts',
@@ -11,19 +12,11 @@ import { CategorizedAmount } from '../categorizedamount';
 })
 export class CategorizedAmountsComponent implements OnInit {
 
-  @Input() parentCategory: string;
-  @Input() categorizedAmounts: CategorizedAmount[];
+  @Input() categorizedAmounts: CategorizedAmounts;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  getTotal() {
-    return this.categorizedAmounts
-        .map(categorizedAmount => categorizedAmount.amount)
-        .reduce((sum, current) => sum + current, 0)
-        .toFixed(2);
   }
 
   ascendingOrder: boolean = true;
@@ -34,7 +27,7 @@ export class CategorizedAmountsComponent implements OnInit {
         this.ascendingOrder = true;
     }
 
-    this.categorizedAmounts.sort((a: CategorizedAmount, b: CategorizedAmount) => {
+    this.categorizedAmounts.categorizedAmounts.sort((a: CategorizedAmount, b: CategorizedAmount) => {
         if(a[sortField] < b[sortField]){
             return -1;
         } else if (a[sortField] > b[sortField]){
@@ -44,7 +37,7 @@ export class CategorizedAmountsComponent implements OnInit {
         }
     });
     if(!this.ascendingOrder){
-        this.categorizedAmounts.reverse();
+        this.categorizedAmounts.categorizedAmounts.reverse();
     }
     this.ascendingOrder = !this.ascendingOrder;
     this.lastSortField = sortField;
