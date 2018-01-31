@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 
 import { TransactionSummary } from '../domain/transactionsummary';
 import { SearchCriteria } from '../searchcriteria';
@@ -15,7 +16,12 @@ export class TransactionSummaryService {
   constructor(private http: Http) {}
 
   getTransactionSummary(searchCriteria: SearchCriteria): Promise<TransactionSummary> {
-    const url = `${this.transactionSummaryUrl}?endDt=${searchCriteria.endDate}&startDt=${searchCriteria.startDate}`;
+
+    let params = new HttpParams().set('endDt', searchCriteria.endDate).set('startDt', searchCriteria.startDate);
+    if(searchCriteria.category){
+        params = params.set('category', searchCriteria.category);
+    }
+    const url = `${this.transactionSummaryUrl}?${params.toString()}`;
     return this.http.get(url)
         .toPromise()
         .then(response => 
