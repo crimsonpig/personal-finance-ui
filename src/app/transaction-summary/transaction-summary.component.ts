@@ -9,8 +9,6 @@ import { TransactionSummaryService } from './transaction-summary.service';
 
 import { SearchService } from '../search/search.service';
 
-import { Subject } from 'rxjs/Subject';
-
 @Component({
   selector: 'app-transaction-summary',
   templateUrl: './transaction-summary.component.html',
