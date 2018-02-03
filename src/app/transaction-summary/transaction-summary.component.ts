@@ -16,8 +16,6 @@ import { SearchService } from '../search/search.service';
 })
 export class TransactionSummaryComponent implements OnInit {
 
-  searchCriteria: SearchCriteria;
-
   incomes: CategorizedAmounts;
 
   expenses: CategorizedAmounts;
@@ -25,8 +23,8 @@ export class TransactionSummaryComponent implements OnInit {
   constructor(private summaryService: TransactionSummaryService,
         private searchService: SearchService) { }
 
-  getSummary(): void {
-   this.summaryService.getTransactionSummary(this.searchCriteria).then(transactionSummary => {
+  getSummary(searchCriteria: SearchCriteria): void {
+   this.summaryService.getTransactionSummary(searchCriteria).then(transactionSummary => {
        let theIncomes = new CategorizedAmounts();
        theIncomes.categorizedAmounts = transactionSummary.incomes;
        theIncomes.total = transactionSummary.incomesTotal;
@@ -42,8 +40,7 @@ export class TransactionSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.searchService.searchCriteriaSubject.subscribe((newSearchCriteria) => {
-        this.searchCriteria = newSearchCriteria;
-        this.getSummary();
+        this.getSummary(newSearchCriteria);
     });
   }
 

@@ -11,6 +11,7 @@ import { NavmenuComponent } from './navmenu/navmenu.component';
 import { SearchService } from './search/search.service';
 import { TransactionSummaryComponent } from './transaction-summary/transaction-summary.component';
 import { TransactionSummaryService } from './transaction-summary/transaction-summary.service';
+import { TransactionCrudService } from './transaction-crud/transaction-crud.service';
 import { TransactionCrudComponent } from './transaction-crud/transaction-crud.component';
 import { CategorizedAmountsComponent } from './categorized-amounts/categorized-amounts.component';
 import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-crud-entries/transaction-crud-entries.component';
@@ -33,6 +34,7 @@ import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-
   ],
   providers: [ 
     TransactionSummaryService,
+    TransactionCrudService,
     SearchService ],
   bootstrap: [AppComponent]
 })
