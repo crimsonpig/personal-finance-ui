@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { TransactionItem } from './transactionitem';
-import { SearchCriteria } from '../searchcriteria';
+import {TransactionItem} from './transactionitem';
+import {SearchCriteria} from '../searchcriteria';
 
-import { TransactionCrudService } from './transaction-crud.service';
+import {TransactionCrudService} from './transaction-crud.service';
 
-import { SearchService } from '../search/search.service';
+import {SearchService} from '../search/search.service';
 
 @Component({
   selector: 'app-transaction-crud',
@@ -14,31 +14,26 @@ import { SearchService } from '../search/search.service';
 })
 export class TransactionCrudComponent implements OnInit {
 
-  newIncomes: TransactionItem[] = [
-    { tDate: '2017-07-30', category: 'PAYCHECK', amount: 2500.11, tType: 'I' },
-  ];
-
+  newIncomes: TransactionItem[] = [];
   incomes: TransactionItem[];
 
-  newExpenses: TransactionItem[] = [
-    { tDate: '2017-07-30', category: 'gas', amount: 22.77, tType: 'E' },
-  ];
+  newExpenses: TransactionItem[] = [];
 
   expenses: TransactionItem[];
 
-  constructor(private searchService: SearchService, 
-    private transactionCrudService: TransactionCrudService) { }
+  constructor(private searchService: SearchService,
+    private transactionCrudService: TransactionCrudService) {}
 
   getTransactions(searchCriteria: SearchCriteria): void {
     this.transactionCrudService.getTransactions(searchCriteria).then(transactions => {
-        this.incomes = transactions.filter(transaction => transaction.tType == 'I');
-        this.expenses = transactions.filter(transaction => transaction.tType == 'E');
+      this.incomes = transactions.filter(transaction => transaction.tType === 'I');
+      this.expenses = transactions.filter(transaction => transaction.tType === 'E');
     });
   }
 
   ngOnInit() {
     this.searchService.searchCriteriaSubject.subscribe((newSearchCriteria) => {
-        this.getTransactions(newSearchCriteria);
+      this.getTransactions(newSearchCriteria);
     });
   }
 

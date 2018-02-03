@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import { HttpParams } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Headers, Http} from '@angular/http';
+import {HttpParams} from '@angular/common/http';
 
-import { SearchCriteria } from '../searchcriteria';
-import { TransactionItem } from './transactionitem';
+import {SearchCriteria} from '../searchcriteria';
+import {TransactionItem} from './transactionitem';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -17,17 +17,27 @@ export class TransactionCrudService {
 
   getTransactions(searchCriteria: SearchCriteria): Promise<TransactionItem[]> {
     let params = new HttpParams().set('endDt', searchCriteria.endDate).set('startDt', searchCriteria.startDate);
-    if(searchCriteria.category){
-        params = params.set('category', searchCriteria.category);
+    if (searchCriteria.category) {
+      params = params.set('category', searchCriteria.category);
     }
     const url = `${this.transactionsUrl}?${params.toString()}`;
     return this.http.get(url)
-        .toPromise()
-        .then(response => response.json() as TransactionItem[])
-        .catch(error => { 
-            console.error('An error occurred', error);
-            Promise.reject(error.message || error);
-        });
+      .toPromise()
+      .then(response => response.json() as TransactionItem[])
+      .catch(error => {
+        console.error('An error occurred', error);
+        Promise.reject(error.message || error);
+      });
+  }
+
+  saveNewTransaction(newTransaction: TransactionItem): Promise<TransactionItem> {
+    return this.http.post(this.transactionsUrl, JSON.stringify(newTransaction), {headers: this.headers})
+      .toPromise()
+      .then(() => newTransaction)
+      .catch(error => {
+        console.error('An error occurred', error);
+        Promise.reject(error.message || error);
+      });
   }
 
 }
