@@ -25,14 +25,14 @@ export class TransactionSummaryComponent implements OnInit {
 
   getSummary(searchCriteria: SearchCriteria): void {
    this.summaryService.getTransactionSummary(searchCriteria).then(transactionSummary => {
-       let theIncomes = new CategorizedAmounts();
+       const theIncomes = new CategorizedAmounts();
        theIncomes.categorizedAmounts = transactionSummary.incomes;
        theIncomes.total = transactionSummary.incomesTotal;
-       theIncomes.parentCategory = "Incomes";
-       let theExpenses = new CategorizedAmounts();
+       theIncomes.parentCategory = 'Incomes';
+       const theExpenses = new CategorizedAmounts();
        theExpenses.categorizedAmounts = transactionSummary.expenses;
-       theExpenses.total = transactionSummary.expensesTotal; 
-       theExpenses.parentCategory = "Expenses";
+       theExpenses.total = transactionSummary.expensesTotal;
+       theExpenses.parentCategory = 'Expenses';
        this.incomes = theIncomes;
        this.expenses = theExpenses;
     });

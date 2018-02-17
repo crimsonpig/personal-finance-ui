@@ -18,17 +18,17 @@ export class TransactionSummaryService {
   getTransactionSummary(searchCriteria: SearchCriteria): Promise<TransactionSummary> {
 
     let params = new HttpParams().set('endDt', searchCriteria.endDate).set('startDt', searchCriteria.startDate);
-    if(searchCriteria.category){
+    if (searchCriteria.category) {
         params = params.set('category', searchCriteria.category);
     }
     const url = `${this.transactionSummaryUrl}?${params.toString()}`;
     return this.http.get(url)
         .toPromise()
-        .then(response => 
+        .then(response =>
             response.json() as TransactionSummary
         )
         .catch(error => {
-            console.error('An error occurred', error);            
+            console.error('An error occurred', error);
             Promise.reject(error.message || error);
         });
   }

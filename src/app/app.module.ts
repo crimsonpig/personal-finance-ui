@@ -32,7 +32,7 @@ import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ 
+  providers: [
     TransactionSummaryService,
     TransactionCrudService,
     SearchService ],

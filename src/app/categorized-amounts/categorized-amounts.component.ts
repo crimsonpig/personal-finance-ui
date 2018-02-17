@@ -14,29 +14,29 @@ export class CategorizedAmountsComponent implements OnInit {
 
   @Input() categorizedAmounts: CategorizedAmounts;
 
+  ascendingOrder = true;
+  lastSortField = '';
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  ascendingOrder: boolean = true;
-  lastSortField: string = '';
-
-  sortItems(sortField: string){
-    if(sortField != this.lastSortField){
+  sortItems(sortField: string) {
+    if (sortField !== this.lastSortField) {
         this.ascendingOrder = true;
     }
 
     this.categorizedAmounts.categorizedAmounts.sort((a: CategorizedAmount, b: CategorizedAmount) => {
-        if(a[sortField] < b[sortField]){
+        if (a[sortField] < b[sortField]) {
             return -1;
-        } else if (a[sortField] > b[sortField]){
+        } else if (a[sortField] > b[sortField]) {
             return 1;
         } else {
             return 0;
         }
     });
-    if(!this.ascendingOrder){
+    if (!this.ascendingOrder) {
         this.categorizedAmounts.categorizedAmounts.reverse();
     }
     this.ascendingOrder = !this.ascendingOrder;

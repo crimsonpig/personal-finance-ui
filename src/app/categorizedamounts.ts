@@ -1,7 +1,7 @@
 import { CategorizedAmount } from './categorizedamount';
 
 export class CategorizedAmounts {
-    parentCategory: string;    
+    parentCategory: string;
     categorizedAmounts: CategorizedAmount[];
     total: number;
 }

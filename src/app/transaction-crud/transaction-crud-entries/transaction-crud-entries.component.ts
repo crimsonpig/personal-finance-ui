@@ -43,7 +43,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
 
 
   sortItems(sortField: string) {
-    if (sortField != this.lastSortField) {
+    if (sortField !== this.lastSortField) {
       this.ascendingOrder = true;
     }
 
