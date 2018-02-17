@@ -24,20 +24,27 @@ export class TransactionCrudService {
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as TransactionItem[])
-      .catch(error => {
-        console.error('An error occurred', error);
-        Promise.reject(error.message || error);
-      });
+      .catch(this.handleError);
   }
 
   saveNewTransaction(newTransaction: TransactionItem): Promise<TransactionItem> {
     return this.http.post(this.transactionsUrl, JSON.stringify(newTransaction), {headers: this.headers})
       .toPromise()
       .then(() => newTransaction)
-      .catch(error => {
-        console.error('An error occurred', error);
-        Promise.reject(error.message || error);
-      });
+      .catch(this.handleError);
+  }
+
+  deleteTransaction(existingTransaction: TransactionItem): Promise<TransactionItem> {
+    const url = `${this.transactionsUrl}/${existingTransaction.tid}`;
+    return this.http.delete(url)
+      .toPromise()
+      .then(response => response.json() as TransactionItem)
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 
 }
