@@ -14,6 +14,7 @@ import { TransactionSummaryService } from './transaction-summary/transaction-sum
 import { TransactionCrudService } from './transaction-crud/transaction-crud.service';
 import { TransactionCrudComponent } from './transaction-crud/transaction-crud.component';
 import { CategorizedAmountsComponent } from './categorized-amounts/categorized-amounts.component';
+import { ThirdPartyComponentsModule } from './third-party-components/third-party-components.module';
 import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-crud-entries/transaction-crud-entries.component';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ThirdPartyComponentsModule
   ],
   providers: [
     TransactionSummaryService,
