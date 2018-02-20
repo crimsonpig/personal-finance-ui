@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 import { DecimalPipe, UpperCasePipe } from '@angular/common';
 
@@ -12,7 +14,12 @@ import { CategorizedAmounts } from '../categorizedamounts';
 })
 export class CategorizedAmountsComponent implements OnInit {
 
-  @Input() categorizedAmounts: CategorizedAmounts;
+   @Input() categorizedAmounts: CategorizedAmounts;
+
+  tableColumns = ['category', 'amount'];
+  dataSource = new MatTableDataSource();
+
+  @ViewChild(MatSort) sort: MatSort;
 
   ascendingOrder = true;
   lastSortField = '';
