@@ -16,9 +16,9 @@ import { SearchService } from '../search/search.service';
 })
 export class TransactionSummaryComponent implements OnInit {
 
-  incomes: CategorizedAmounts;
+  incomes: CategorizedAmounts = new CategorizedAmounts();
 
-  expenses: CategorizedAmounts;
+  expenses: CategorizedAmounts = new CategorizedAmounts();
 
   constructor(private summaryService: TransactionSummaryService,
         private searchService: SearchService) { }
