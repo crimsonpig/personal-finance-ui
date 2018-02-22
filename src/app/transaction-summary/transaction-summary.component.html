@@ -1,2 +1,32 @@
-<app-categorized-amounts [categorizedAmounts]=incomes ></app-categorized-amounts>
-<app-categorized-amounts [categorizedAmounts]=expenses></app-categorized-amounts>
+<mat-table [dataSource]="incomesDataSource" matSort matSortName="incomesSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
+
+	<ng-container matColumnDef="category">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.category}}</mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="amount">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.amount}}</mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+</mat-table>
+
+
+<mat-table [dataSource]="expensesDataSource" matSort matSortName="expensesSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
+
+	<ng-container matColumnDef="category">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.category}}</mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="amount">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.amount}}</mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+</mat-table>
