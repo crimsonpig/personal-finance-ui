@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 
 import { CategorizedAmount } from '../categorizedamount';
 import { CategorizedAmounts } from '../categorizedamounts';
@@ -18,16 +18,24 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 export class TransactionSummaryComponent implements OnInit {
 
   tableColumns = ['category', 'amount'];
+  
+  incomes: CategorizedAmounts = new CategorizedAmounts();
+  expenses: CategorizedAmounts = new CategorizedAmounts();
+  
   incomesDataSource = new MatTableDataSource();
   expensesDataSource = new MatTableDataSource();
 
-  @ViewChild(MatSort) incomesSort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
 
+  @ViewChild("incomeSort") incomeSort: MatSort;
+  @ViewChild("expensesSort") expensesSort: MatSort;
+  
   constructor(private summaryService: TransactionSummaryService,
         private searchService: SearchService) { }
 
   ngAfterViewInit(){
-    this.incomesDataSource.sort = this.incomesSort;
+    this.incomesDataSource!.sort = this.incomeSort;
+    this.expensesDataSource!.sort = this.expensesSort;
   }
   
   getSummary(searchCriteria: SearchCriteria): void {
@@ -40,6 +48,8 @@ export class TransactionSummaryComponent implements OnInit {
        theExpenses.categorizedAmounts = transactionSummary.expenses;
        theExpenses.total = transactionSummary.expensesTotal;
        theExpenses.parentCategory = 'Expenses';
+       this.incomes = theIncomes;
+       this.expenses = theExpenses;
        this.incomesDataSource.data = theIncomes.categorizedAmounts;
        this.expensesDataSource.data = theExpenses.categorizedAmounts;
     });

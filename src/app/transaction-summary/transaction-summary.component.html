@@ -1,4 +1,5 @@
-<mat-table [dataSource]="incomesDataSource" matSort matSortName="incomesSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
+<h3>{{incomes.parentCategory}}: {{incomes.total}}</h3>
+<mat-table [dataSource]="incomesDataSource" matSort #incomeSort="matSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
 
 	<ng-container matColumnDef="category">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
@@ -14,8 +15,8 @@
 	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
 </mat-table>
 
-
-<mat-table [dataSource]="expensesDataSource" matSort matSortName="expensesSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
+<h3>{{expenses.parentCategory}}: {{expenses.total}}</h3>
+<mat-table [dataSource]="expensesDataSource" matSort #expensesSort="matSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
 
 	<ng-container matColumnDef="category">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
