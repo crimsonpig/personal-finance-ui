@@ -61,4 +61,8 @@ export class TransactionSummaryComponent implements OnInit {
     });
   }
 
+  calculateNetTotal(): number {
+    return this.incomes.total - this.expenses.total;
+  }
+
 }
