@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { MatTableDataSource, MatSort } from '@angular/material';
 
@@ -12,7 +12,7 @@ import { CategorizedAmounts } from '../categorizedamounts';
   templateUrl: './categorized-amounts.component.html',
   styleUrls: ['./categorized-amounts.component.css']
 })
-export class CategorizedAmountsComponent implements OnInit {
+export class CategorizedAmountsComponent {
 
   categorizedAmounts: CategorizedAmounts = new CategorizedAmounts();
 
