@@ -1,20 +1,5 @@
 <h3>Net Total: {{netTotal | number:'1.2-2'}}</h3>
 
 <app-categorized-amounts #incomeSummary></app-categorized-amounts>
+<app-categorized-amounts #expensesSummary></app-categorized-amounts>
 
-<h3>{{expenses.parentCategory}}: {{expenses.total}}</h3>
-<mat-table [dataSource]="expensesDataSource" matSort #expensesSort="matSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>
-
-	<ng-container matColumnDef="category">
-		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
-		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.category}}</mat-cell>
-	</ng-container>
-
-	<ng-container matColumnDef="amount">
-		<mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
-		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.amount}}</mat-cell>
-	</ng-container>
-
-	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
-</mat-table>
