@@ -1,31 +1,16 @@
 <h3>{{categorizedAmounts.parentCategory}}: {{categorizedAmounts.total}}</h3>
-<table>
-    <thead>
-        <tr>
-            <th (click)="sortItems('category')">Category</th>
-            <th (click)="sortItems('amount')">Amount</th>
-        </tr>    
-    </thead>
-    <tbody>
-        <tr *ngFor="let categorizedAmount of categorizedAmounts.categorizedAmounts">
-            <td>{{categorizedAmount.category | uppercase}}</td>
-            <td>{{categorizedAmount.amount | number:'1.2-2'}}</td>
-        </tr>
-    </tbody>
-</table>
-
-<mat-table #table [dataSource]="dataSource" matSort>
+<mat-table #table [dataSource]="dataSource" matSort matSortActive="category" matSortDirection="asc" matSortDisableClear>
 
 	<ng-container matColumnDef="category">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
-		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.category}}</mat-cell>
+		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.category | uppercase}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="amount">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
-		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.amount}}</mat-cell>
+		<mat-cell *matCellDef="let categorizedAmount">{{categorizedAmount.amount | number:'1.2-2'}}</mat-cell>
 	</ng-container>
 
 	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
 </mat-table>
