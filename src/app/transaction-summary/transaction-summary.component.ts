@@ -29,7 +29,7 @@ export class TransactionSummaryComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  @ViewChild(CategorizedAmountsComponent) categorizedAmountsComponent: CategorizedAmountsComponent;
+  @ViewChild("incomeSummary") categorizedAmountsComponent: CategorizedAmountsComponent;
 
   @ViewChild("incomeSort") incomeSort: MatSort;
   @ViewChild("expensesSort") expensesSort: MatSort;
