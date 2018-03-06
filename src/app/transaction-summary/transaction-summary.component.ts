@@ -21,14 +21,15 @@ export class TransactionSummaryComponent implements OnInit {
 
   tableColumns = ['category', 'amount'];
   
-  incomes: CategorizedAmounts = new CategorizedAmounts();
+  netTotal: number = 0;
+
   expenses: CategorizedAmounts = new CategorizedAmounts();
   
   expensesDataSource = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
 
-  @ViewChild("incomeSummary") categorizedAmountsComponent: CategorizedAmountsComponent;
+  @ViewChild("incomeSummary") incomesComponent: CategorizedAmountsComponent;
 
   @ViewChild("expensesSort") expensesSort: MatSort;
   
@@ -49,10 +50,11 @@ export class TransactionSummaryComponent implements OnInit {
        theExpenses.categorizedAmounts = transactionSummary.expenses;
        theExpenses.total = transactionSummary.expensesTotal;
        theExpenses.parentCategory = 'Expenses';
-       this.incomes = theIncomes;
+
        this.expenses = theExpenses;
        this.expensesDataSource.data = theExpenses.categorizedAmounts;
-       this.categorizedAmountsComponent.setCategorizedAmountData(theIncomes);
+       this.incomesComponent.setCategorizedAmountData(theIncomes);
+       this.netTotal = theIncomes.total - theExpenses.total;
     });
   }
 
@@ -60,10 +62,6 @@ export class TransactionSummaryComponent implements OnInit {
     this.searchService.searchCriteriaSubject.subscribe((newSearchCriteria) => {
         this.getSummary(newSearchCriteria);
     });
-  }
-
-  calculateNetTotal(): number {
-    return this.incomes.total - this.expenses.total;
   }
 
 }
