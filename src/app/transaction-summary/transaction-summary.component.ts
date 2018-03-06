@@ -10,6 +10,8 @@ import { TransactionSummaryService } from './transaction-summary.service';
 import { SearchService } from '../search/search.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 
+import { CategorizedAmountsComponent } from '../categorized-amounts/categorized-amounts.component';
+
 @Component({
   selector: 'app-transaction-summary',
   templateUrl: './transaction-summary.component.html',
@@ -26,6 +28,8 @@ export class TransactionSummaryComponent implements OnInit {
   expensesDataSource = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
+
+  @ViewChild(CategorizedAmountsComponent) categorizedAmountsComponent: CategorizedAmountsComponent;
 
   @ViewChild("incomeSort") incomeSort: MatSort;
   @ViewChild("expensesSort") expensesSort: MatSort;
@@ -52,6 +56,8 @@ export class TransactionSummaryComponent implements OnInit {
        this.expenses = theExpenses;
        this.incomesDataSource.data = theIncomes.categorizedAmounts;
        this.expensesDataSource.data = theExpenses.categorizedAmounts;
+       this.categorizedAmountsComponent.categorizedAmounts = theIncomes;
+       this.categorizedAmountsComponent.reload();
     });
   }
 

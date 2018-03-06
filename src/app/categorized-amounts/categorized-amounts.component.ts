@@ -14,12 +14,10 @@ import { CategorizedAmounts } from '../categorizedamounts';
 })
 export class CategorizedAmountsComponent implements OnInit {
 
-  @Input() categorizedAmounts: CategorizedAmounts;
+  @Input() categorizedAmounts: CategorizedAmounts = new CategorizedAmounts();
 
   tableColumns = ['category', 'amount'];
   
-  categorizedAmounts: CategorizedAmounts = new CategorizedAmounts();
-
   dataSource = new MatTableDataSource();
   
   @ViewChild(MatSort) sort: MatSort;
@@ -28,6 +26,10 @@ export class CategorizedAmountsComponent implements OnInit {
 
   ngAfterViewInit(){
     this.dataSource!.sort = this.sort;
+  }
+
+  reload(){
+    this.dataSource.data = this.categorizedAmounts.categorizedAmounts;
   }
 
 }
