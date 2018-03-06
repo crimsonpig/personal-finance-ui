@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatTableDataSource, MatSort } from '@angular/material';
 
@@ -14,7 +14,7 @@ import { CategorizedAmounts } from '../categorizedamounts';
 })
 export class CategorizedAmountsComponent implements OnInit {
 
-  @Input() categorizedAmounts: CategorizedAmounts = new CategorizedAmounts();
+  categorizedAmounts: CategorizedAmounts = new CategorizedAmounts();
 
   tableColumns = ['category', 'amount'];
   
@@ -28,7 +28,8 @@ export class CategorizedAmountsComponent implements OnInit {
     this.dataSource!.sort = this.sort;
   }
 
-  reload(){
+  setCategorizedAmountData(newCategorizedAmounts: CategorizedAmounts){
+    this.categorizedAmounts = newCategorizedAmounts;
     this.dataSource.data = this.categorizedAmounts.categorizedAmounts;
   }
 

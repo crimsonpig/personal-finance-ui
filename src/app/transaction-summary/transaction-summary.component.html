@@ -1,6 +1,6 @@
 <h3>Net Total: {{calculateNetTotal().toFixed(2)}}</h3>
 
-<app-categorized-amounts #xxx [categorizedAmounts]="incomes"></app-categorized-amounts>
+<app-categorized-amounts #xxx></app-categorized-amounts>
 
 <h3>{{incomes.parentCategory}}: {{incomes.total}}</h3>
 <mat-table [dataSource]="incomesDataSource" matSort #incomeSort="matSort" matSortActive="category" matSortDirection="asc" matSortDisableClear>

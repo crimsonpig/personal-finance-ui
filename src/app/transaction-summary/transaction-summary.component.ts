@@ -56,8 +56,7 @@ export class TransactionSummaryComponent implements OnInit {
        this.expenses = theExpenses;
        this.incomesDataSource.data = theIncomes.categorizedAmounts;
        this.expensesDataSource.data = theExpenses.categorizedAmounts;
-       this.categorizedAmountsComponent.categorizedAmounts = theIncomes;
-       this.categorizedAmountsComponent.reload();
+       this.categorizedAmountsComponent.setCategorizedAmountData(theIncomes);
     });
   }
 
