@@ -24,21 +24,18 @@ export class TransactionSummaryComponent implements OnInit {
   incomes: CategorizedAmounts = new CategorizedAmounts();
   expenses: CategorizedAmounts = new CategorizedAmounts();
   
-  incomesDataSource = new MatTableDataSource();
   expensesDataSource = new MatTableDataSource();
 
   @ViewChild(MatSort) sort: MatSort;
 
   @ViewChild("incomeSummary") categorizedAmountsComponent: CategorizedAmountsComponent;
 
-  @ViewChild("incomeSort") incomeSort: MatSort;
   @ViewChild("expensesSort") expensesSort: MatSort;
   
   constructor(private summaryService: TransactionSummaryService,
         private searchService: SearchService) { }
 
   ngAfterViewInit(){
-    this.incomesDataSource!.sort = this.incomeSort;
     this.expensesDataSource!.sort = this.expensesSort;
   }
   
@@ -54,7 +51,6 @@ export class TransactionSummaryComponent implements OnInit {
        theExpenses.parentCategory = 'Expenses';
        this.incomes = theIncomes;
        this.expenses = theExpenses;
-       this.incomesDataSource.data = theIncomes.categorizedAmounts;
        this.expensesDataSource.data = theExpenses.categorizedAmounts;
        this.categorizedAmountsComponent.setCategorizedAmountData(theIncomes);
     });
