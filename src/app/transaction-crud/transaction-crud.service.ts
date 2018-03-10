@@ -30,7 +30,7 @@ export class TransactionCrudService {
   saveNewTransaction(newTransaction: TransactionItem): Promise<TransactionItem> {
     return this.http.post(this.transactionsUrl, JSON.stringify(newTransaction), {headers: this.headers})
       .toPromise()
-      .then(() => newTransaction)
+      .then(response => response.json() as TransactionItem)
       .catch(this.handleError);
   }
 
