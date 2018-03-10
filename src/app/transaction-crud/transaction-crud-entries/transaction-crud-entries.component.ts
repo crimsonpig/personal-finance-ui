@@ -47,7 +47,8 @@ export class TransactionCrudEntriesComponent implements OnInit {
   saveNewItem(itemToSave: TransactionItem) {
     itemToSave.tType = this.tType;
     this.transactionCrudService.saveNewTransaction(itemToSave).then(persistedTransaction => {
-      this.transactionItems.push(itemToSave);
+      this.transactionItems.push(persistedTransaction);
+      this.dataSource.data = this.transactionItems;
       this.removeNewItem(itemToSave);
     });
   }
