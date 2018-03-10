@@ -15,8 +15,8 @@ export class TransactionCrudEntriesComponent implements OnInit {
 
   @Input() tType: string;
   @Input() parentCategory: string;
-  @Input() newTransactionItems: TransactionItem[];
-  @Input() transactionItems: TransactionItem[];
+  newTransactionItems: TransactionItem[] = [];
+  transactionItems: TransactionItem[];
 
   tableColumns = ['tDate', 'category', 'amount', 'remove'];
   dataSource = new MatTableDataSource();

@@ -16,11 +16,7 @@ import {SearchService} from '../search/search.service';
 })
 export class TransactionCrudComponent implements OnInit {
 
-  newIncomes: TransactionItem[] = [];
   incomes: TransactionItem[];
-
-  newExpenses: TransactionItem[] = [];
-
   expenses: TransactionItem[];
 
   @ViewChild("incomeEntries") incomeEntriesComponent: TransactionCrudEntriesComponent;

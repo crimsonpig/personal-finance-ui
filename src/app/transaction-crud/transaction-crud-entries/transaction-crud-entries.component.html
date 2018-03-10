@@ -5,9 +5,7 @@
             <th>Date</th>
             <th>Category</th>
             <th>Amount</th>
-            <th>
-                <button>Add</button>
-            </th>
+            <th></th>
         </tr>    
     </thead>
     <tbody>
@@ -24,14 +22,6 @@
             <td>
                 <button (click)="saveNewItem(newTransactionItem)">Save</button>
                 <button (click)="removeNewItem(newTransactionItem)">Cancel</button>
-            </td>
-        </tr>
-        <tr *ngFor="let transactionItem of transactionItems">
-            <td>{{transactionItem.tDate}}</td>
-            <td>{{transactionItem.category | uppercase}}</td>
-            <td>{{transactionItem.amount | number:'1.2-2'}}</td>
-            <td>
-                <button>x</button>
             </td>
         </tr>
     </tbody>
