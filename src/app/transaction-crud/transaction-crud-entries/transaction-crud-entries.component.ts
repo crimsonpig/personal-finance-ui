@@ -18,7 +18,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
   @Input() newTransactionItems: TransactionItem[];
   @Input() transactionItems: TransactionItem[];
 
-  tableColumns = ['tDate', 'category', 'amount'];
+  tableColumns = ['tDate', 'category', 'amount', 'remove'];
   dataSource = new MatTableDataSource();
   
   @ViewChild(MatSort) sort: MatSort;
@@ -84,6 +84,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
       this.transactionCrudService.deleteTransaction(itemToRemove).then(deletedTransaction => {
         const idx: number = this.transactionItems.indexOf(itemToRemove);
         this.transactionItems.splice(idx, 1);
+        this.dataSource.data = this.transactionItems;
       });
     }
   }

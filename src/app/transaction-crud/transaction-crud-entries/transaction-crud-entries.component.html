@@ -53,6 +53,13 @@
 		<mat-cell *matCellDef="let transactionItem">{{transactionItem.amount | number:'1.2-2'}}</mat-cell>
 	</ng-container>
 
+    <ng-container matColumnDef="remove">
+        <mat-header-cell *matHeaderCellDef> Remove </mat-header-cell>
+        <mat-cell *matCellDef="let transactionItem">
+            <button (click)="removeExistingItem(transactionItem)">x</button>
+        </mat-cell>
+    </ng-container>
+
 	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
 	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>    
 </mat-table>
