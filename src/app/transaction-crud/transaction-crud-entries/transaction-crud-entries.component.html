@@ -6,7 +6,7 @@
             <th>Category</th>
             <th>Amount</th>
             <th>
-                <button (click)="addNewItem()">Add</button>
+                <button>Add</button>
             </th>
         </tr>    
     </thead>
@@ -54,7 +54,9 @@
 	</ng-container>
 
     <ng-container matColumnDef="remove">
-        <mat-header-cell *matHeaderCellDef> Remove </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>  
+            <button (click)="addNewItem()">Add</button>
+        </mat-header-cell>
         <mat-cell *matCellDef="let transactionItem">
             <button (click)="removeExistingItem(transactionItem)">x</button>
         </mat-cell>
