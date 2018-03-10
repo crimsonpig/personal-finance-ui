@@ -36,3 +36,23 @@
         </tr>
     </tbody>
 </table>
+<mat-table #table [dataSource]="dataSource" matSort matSortActive="tDate" matSortDirection="desc" matSortDisableClear>
+
+	<ng-container matColumnDef="tDate">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
+		<mat-cell *matCellDef="let transactionItem">{{transactionItem.tDate}}</mat-cell>
+	</ng-container>
+	
+    <ng-container matColumnDef="category">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+		<mat-cell *matCellDef="let transactionItem">{{transactionItem.category | uppercase}}</mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="amount">
+		<mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+		<mat-cell *matCellDef="let transactionItem">{{transactionItem.amount | number:'1.2-2'}}</mat-cell>
+	</ng-container>
+
+	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>    
+</mat-table>

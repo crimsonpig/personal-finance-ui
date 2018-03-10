@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, ViewChild, OnInit} from '@angular/core';
 
 import {TransactionItem} from '../transactionitem';
 
 import {TransactionCrudService} from '../transaction-crud.service';
+
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-transaction-crud-entries',
@@ -16,6 +18,11 @@ export class TransactionCrudEntriesComponent implements OnInit {
   @Input() newTransactionItems: TransactionItem[];
   @Input() transactionItems: TransactionItem[];
 
+  tableColumns = ['tDate', 'category', 'amount'];
+  dataSource = new MatTableDataSource();
+  
+  @ViewChild(MatSort) sort: MatSort;
+
   ascendingOrder = true;
   lastSortField = '';
 
@@ -24,8 +31,17 @@ export class TransactionCrudEntriesComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit(){
+    this.dataSource!.sort = this.sort;
+  }
+
   addNewItem() {
     this.newTransactionItems.push(new TransactionItem());
+  }
+
+  setTransactionItems(tItems: TransactionItem[]) {
+    this.transactionItems = tItems;
+    this.dataSource.data = this.transactionItems;
   }
 
   saveNewItem(itemToSave: TransactionItem) {
