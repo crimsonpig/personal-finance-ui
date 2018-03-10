@@ -2,9 +2,9 @@
 <table>
     <thead>
         <tr>
-            <th (click)="sortItems('tDate')">Date</th>
-            <th (click)="sortItems('category')">Category</th>
-            <th (click)="sortItems('amount')">Amount</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Amount</th>
             <th>
                 <button (click)="addNewItem()">Add</button>
             </th>
@@ -31,7 +31,7 @@
             <td>{{transactionItem.category | uppercase}}</td>
             <td>{{transactionItem.amount | number:'1.2-2'}}</td>
             <td>
-                <button (click)="removeExistingItem(transactionItem)">x</button>
+                <button>x</button>
             </td>
         </tr>
     </tbody>

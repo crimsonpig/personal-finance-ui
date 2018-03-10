@@ -57,28 +57,6 @@ export class TransactionCrudEntriesComponent implements OnInit {
     this.newTransactionItems.splice(idx, 1);
   }
 
-
-  sortItems(sortField: string) {
-    if (sortField !== this.lastSortField) {
-      this.ascendingOrder = true;
-    }
-
-    this.transactionItems.sort((a: TransactionItem, b: TransactionItem) => {
-      if (a[sortField] < b[sortField]) {
-        return -1;
-      } else if (a[sortField] > b[sortField]) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-    if (!this.ascendingOrder) {
-      this.transactionItems.reverse();
-    }
-    this.ascendingOrder = !this.ascendingOrder;
-    this.lastSortField = sortField;
-  }
-
   removeExistingItem(itemToRemove: TransactionItem) {
     if (confirm('Are you sure you want to delete this item?')) {
       this.transactionCrudService.deleteTransaction(itemToRemove).then(deletedTransaction => {
