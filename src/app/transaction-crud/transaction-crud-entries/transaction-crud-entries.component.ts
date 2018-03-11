@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, OnInit} from '@angular/core';
+import {Component, Input, ViewChild } from '@angular/core';
 
 import {TransactionItem} from '../transactionitem';
 
@@ -11,7 +11,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
   templateUrl: './transaction-crud-entries.component.html',
   styleUrls: ['./transaction-crud-entries.component.css']
 })
-export class TransactionCrudEntriesComponent implements OnInit {
+export class TransactionCrudEntriesComponent {
 
   @Input() tType: string;
   @Input() parentCategory: string;
@@ -25,13 +25,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
   
   @ViewChild(MatSort) sort: MatSort;
 
-  ascendingOrder = true;
-  lastSortField = '';
-
   constructor(private transactionCrudService: TransactionCrudService) {}
-
-  ngOnInit() {
-  }
 
   ngAfterViewInit(){
     this.dataSource!.sort = this.sort;
