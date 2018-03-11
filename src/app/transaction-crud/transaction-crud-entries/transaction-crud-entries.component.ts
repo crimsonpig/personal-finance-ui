@@ -19,7 +19,9 @@ export class TransactionCrudEntriesComponent implements OnInit {
   transactionItems: TransactionItem[];
 
   tableColumns = ['tDate', 'category', 'amount', 'remove'];
+
   dataSource = new MatTableDataSource();
+  newItemsDataSource = new MatTableDataSource();
   
   @ViewChild(MatSort) sort: MatSort;
 
@@ -37,6 +39,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
 
   addNewItem() {
     this.newTransactionItems.push(new TransactionItem());
+    this.newItemsDataSource.data = this.newTransactionItems;
   }
 
   setTransactionItems(tItems: TransactionItem[]) {
@@ -56,6 +59,7 @@ export class TransactionCrudEntriesComponent implements OnInit {
   removeNewItem(itemToRemove: TransactionItem) {
     const idx: number = this.newTransactionItems.indexOf(itemToRemove);
     this.newTransactionItems.splice(idx, 1);
+    this.newItemsDataSource.data = this.newTransactionItems;
   }
 
   removeExistingItem(itemToRemove: TransactionItem) {

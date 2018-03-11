@@ -1,57 +1,58 @@
 <h3>{{parentCategory}}</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th></th>
-        </tr>    
-    </thead>
-    <tbody>
-        <tr *ngFor="let newTransactionItem of newTransactionItems">
-            <td>
-                <input [(ngModel)]="newTransactionItem.tDate">
-            </td>
-            <td>
-                <input [(ngModel)]="newTransactionItem.category">
-            </td>
-            <td>
-                <input [(ngModel)]="newTransactionItem.amount">
-            </td>
-            <td>
-                <button (click)="saveNewItem(newTransactionItem)">Save</button>
-                <button (click)="removeNewItem(newTransactionItem)">Cancel</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<mat-table [dataSource]="dataSource" matSort matSortActive="tDate" matSortDirection="desc" matSortDisableClear>
-
+<mat-table [dataSource]="newItemsDataSource" matSort matSortActive="tDate" matSortDirection="desc" matSortDisableClear>
 	<ng-container matColumnDef="tDate">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Date</mat-header-cell>
-		<mat-cell *matCellDef="let transactionItem">{{transactionItem.tDate}}</mat-cell>
+		<mat-cell *matCellDef="let newTransactionItem">
+            <input [(ngModel)]="newTransactionItem.tDate">
+        </mat-cell>
 	</ng-container>
 	
     <ng-container matColumnDef="category">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
-		<mat-cell *matCellDef="let transactionItem">{{transactionItem.category | uppercase}}</mat-cell>
+		<mat-cell *matCellDef="let newTransactionItem">
+            <input [(ngModel)]="newTransactionItem.category">
+        </mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="amount">
 		<mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
-		<mat-cell *matCellDef="let transactionItem">{{transactionItem.amount | number:'1.2-2'}}</mat-cell>
+		<mat-cell *matCellDef="let newTransactionItem">
+            <input [(ngModel)]="newTransactionItem.amount">
+        </mat-cell>
 	</ng-container>
 
     <ng-container matColumnDef="remove">
         <mat-header-cell *matHeaderCellDef>  
             <button (click)="addNewItem()">Add</button>
         </mat-header-cell>
+        <mat-cell *matCellDef="let newTransactionItem">
+            <button (click)="saveNewItem(newTransactionItem)">Save</button>
+            <button (click)="removeNewItem(newTransactionItem)">Cancel</button>
+        </mat-cell>
+    </ng-container>
+
+	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>   
+</mat-table>
+<mat-table [dataSource]="dataSource">
+
+	<ng-container matColumnDef="tDate">
+		<mat-cell *matCellDef="let transactionItem">{{transactionItem.tDate}}</mat-cell>
+	</ng-container>
+	
+    <ng-container matColumnDef="category">
+		<mat-cell *matCellDef="let transactionItem">{{transactionItem.category | uppercase}}</mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="amount">
+		<mat-cell *matCellDef="let transactionItem">{{transactionItem.amount | number:'1.2-2'}}</mat-cell>
+	</ng-container>
+
+    <ng-container matColumnDef="remove">
         <mat-cell *matCellDef="let transactionItem">
             <button (click)="removeExistingItem(transactionItem)">x</button>
         </mat-cell>
     </ng-container>
 
-	<mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
 	<mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>    
 </mat-table>
