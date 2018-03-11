@@ -5,7 +5,7 @@ import { TransactionSummaryComponent } from '../transaction-summary/transaction-
 import { TransactionCrudComponent } from '../transaction-crud/transaction-crud.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/summary', pathMatch: 'full' },
+    { path: '', redirectTo: '/transactions', pathMatch: 'full' },
     { path: 'summary', component: TransactionSummaryComponent },
     { path: 'transactions', component: TransactionCrudComponent },
 ];
