@@ -23,11 +23,11 @@
 
     <ng-container matColumnDef="remove">
         <mat-header-cell *matHeaderCellDef>  
-            <button (click)="addNewItem()">Add</button>
+            <button mat-raised-button color="primary" (click)="addNewItem()">Add</button>
         </mat-header-cell>
         <mat-cell *matCellDef="let newTransactionItem">
-            <button (click)="saveNewItem(newTransactionItem)">Save</button>
-            <button (click)="removeNewItem(newTransactionItem)">Cancel</button>
+            <button mat-raised-button color="primary" (click)="saveNewItem(newTransactionItem)">Save</button>
+            <button mat-raised-button color="accent" (click)="removeNewItem(newTransactionItem)">Cancel</button>
         </mat-cell>
     </ng-container>
 
@@ -50,7 +50,7 @@
 
     <ng-container matColumnDef="remove">
         <mat-cell *matCellDef="let transactionItem">
-            <button (click)="removeExistingItem(transactionItem)">x</button>
+            <button mat-mini-fab color="warn" (click)="removeExistingItem(transactionItem)">x</button>
         </mat-cell>
     </ng-container>
 

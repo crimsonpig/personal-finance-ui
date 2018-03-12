@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { MatTableModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatButtonModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     NoopAnimationsModule, 
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule
   ],
   exports: [
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule
   ],
   declarations: []
 })
