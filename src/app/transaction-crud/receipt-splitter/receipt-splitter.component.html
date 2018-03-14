@@ -60,30 +60,22 @@
 
     <ng-container matColumnDef="category">
 		<mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">
-            <input [(ngModel)]="outputReceiptItem.category">
-        </mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.category}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="subtotal">
 		<mat-header-cell *matHeaderCellDef>Subtotal</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">
-            <input [(ngModel)]="outputReceiptItem.subtotal">
-        </mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.subtotal}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="tax">
 		<mat-header-cell *matHeaderCellDef>Tax</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">
-            <input [(ngModel)]="outputReceiptItem.tax">
-        </mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.tax}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="total">
 		<mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">
-            <input [(ngModel)]="outputReceiptItem.total">
-        </mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.total}}</mat-cell>
 	</ng-container>
 
 
