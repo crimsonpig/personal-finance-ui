@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ReceiptItem } from './receiptitem';
+import { OutputReceiptItem } from './outputreceiptitem';
 
 import { MatTableDataSource } from '@angular/material';
 
@@ -26,8 +27,10 @@ export class ReceiptSplitterComponent implements OnInit {
 
   newReceiptItems: ReceiptItem[] = [];
   newItemsDataSource = new MatTableDataSource();
+  outputItemsDataSource = new MatTableDataSource();
 
   inputTableColumns = ['category', 'amount', 'taxable', 'remove'];
+  outputTableColumns = ['category', 'subtotal', 'tax', 'total'];
 
   constructor() { }
 
@@ -47,6 +50,10 @@ export class ReceiptSplitterComponent implements OnInit {
 
   calculate() {
     
+  }
+
+  saveAll() {
+
   }
 
 }

@@ -56,6 +56,43 @@
 <div>Total: {{total}}</div>
 
 
+<mat-table [dataSource]="outputItemsDataSource">
+
+    <ng-container matColumnDef="category">
+		<mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">
+            <input [(ngModel)]="outputReceiptItem.category">
+        </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="subtotal">
+		<mat-header-cell *matHeaderCellDef>Subtotal</mat-header-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">
+            <input [(ngModel)]="outputReceiptItem.subtotal">
+        </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="tax">
+		<mat-header-cell *matHeaderCellDef>Tax</mat-header-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">
+            <input [(ngModel)]="outputReceiptItem.tax">
+        </mat-cell>
+	</ng-container>
+
+	<ng-container matColumnDef="total">
+		<mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">
+            <input [(ngModel)]="outputReceiptItem.total">
+        </mat-cell>
+	</ng-container>
+
+
+	<mat-header-row *matHeaderRowDef="outputTableColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: outputTableColumns;"></mat-row> 
+</mat-table>
+
+<button mat-raised-button color="primary" (click)="saveAll()">Save All</button>
+
 <div>Check Subtotal: {{checkSubtotal}} {{checkSubtotal == subtotal}}</div>
 <div>Check Tax: {{checkTax}} {{checkTax == tax}}</div>
 <div>Check Total: {{checkTotal}} {{checkTotal == total}}</div>
