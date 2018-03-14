@@ -16,6 +16,7 @@ import { TransactionCrudComponent } from './transaction-crud/transaction-crud.co
 import { CategorizedAmountsComponent } from './categorized-amounts/categorized-amounts.component';
 import { ThirdPartyComponentsModule } from './third-party-components/third-party-components.module';
 import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-crud-entries/transaction-crud-entries.component';
+import { ReceiptSplitterComponent } from './transaction-crud/receipt-splitter/receipt-splitter.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TransactionCrudEntriesComponent } from './transaction-crud/transaction-
     TransactionCrudComponent,
     CategorizedAmountsComponent,
     TransactionCrudEntriesComponent,
+    ReceiptSplitterComponent,
   ],
   imports: [
     BrowserModule,
