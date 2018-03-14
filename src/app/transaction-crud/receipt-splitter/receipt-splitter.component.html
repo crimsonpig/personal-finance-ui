@@ -37,3 +37,27 @@
 	<mat-header-row *matHeaderRowDef="inputTableColumns"></mat-header-row>
 	<mat-row *matRowDef="let row; columns: inputTableColumns;"></mat-row> 
 </mat-table>
+
+<button mat-raised-button color="primary" (click)="calculate()">Calculate</button>
+<div>Subtotal: {{subtotal}}</div>
+<div>
+<label>Pre-Tax Addition</label>
+<input [(ngModel)]="preTaxAddition">
+</div>
+<div>
+<label>Tax Rate</label>
+<input [(ngModel)]="taxRate">
+</div>
+<div>Tax: {{tax}}</div>
+<div>
+<label>Post-Tax Addition</label>
+<input [(ngModel)]="postTaxAddition">
+</div>
+<div>Total: {{total}}</div>
+
+
+<div>Check Subtotal: {{checkSubtotal}} {{checkSubtotal == subtotal}}</div>
+<div>Check Tax: {{checkTax}} {{checkTax == tax}}</div>
+<div>Check Total: {{checkTotal}} {{checkTotal == total}}</div>
+
+

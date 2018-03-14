@@ -13,6 +13,17 @@ export class ReceiptSplitterComponent implements OnInit {
 
   @Input() receiptDate;
 
+  subtotal: number = 0;
+  @Input() preTaxAddition: number;
+  @Input() taxRate: number;
+  tax: number = 0;
+  @Input() postTaxAddition: number;
+  total: number = 0;
+
+  checkSubtotal: number = 0;
+  checkTax: number = 0;
+  checkTotal: number = 0;
+
   newReceiptItems: ReceiptItem[] = [];
   newItemsDataSource = new MatTableDataSource();
 
@@ -32,6 +43,10 @@ export class ReceiptSplitterComponent implements OnInit {
     const idx: number = this.newReceiptItems.indexOf(itemToRemove);
     this.newReceiptItems.splice(idx, 1);
     this.newItemsDataSource.data = this.newReceiptItems;
+  }
+
+  calculate() {
+    
   }
 
 }
