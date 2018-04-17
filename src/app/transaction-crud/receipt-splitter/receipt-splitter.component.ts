@@ -53,8 +53,7 @@ export class ReceiptSplitterComponent implements OnInit {
     let taxableItems = new Map();
     const receiptItems: ReceiptItem[] = this.newReceiptItems;
     const sumFunction = (x: number, y: number) => x + y;
-    const amounts = receiptItems.map(item => item.amount);
-    this.subtotal = receiptItems.map(item => item.amount).reduce(sumFunction, 0);
+    this.subtotal = receiptItems.map(item => new Number(item.amount).valueOf()).reduce(sumFunction, 0);
   }
 
   saveAll() {
