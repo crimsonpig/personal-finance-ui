@@ -18,7 +18,8 @@ export class ReceiptSplitterComponent implements OnInit {
   @Input() preTaxAddition: number = 0;
   @Input() taxRate: number;
   tax: number = 0;
-  @Input() postTaxAddition: number;
+  taxableAmount: number = 0;
+  @Input() postTaxAddition: number = 0;
   total: number = 0;
 
   checkSubtotal: number = 0;
@@ -74,7 +75,7 @@ export class ReceiptSplitterComponent implements OnInit {
     const percentTaxable = taxableSubtotal / this.subtotal;
     const percentNonTaxable = nonTaxableSubtotal / this.subtotal;
 
-    const taxableWithPreTax = taxableSubtotal + (this.preTaxAddition * percentTaxable);
+    this.taxableAmount = taxableSubtotal + (this.preTaxAddition * percentTaxable);
     const nonTaxableWithPreTax = nonTaxableSubtotal + (this.preTaxAddition * percentNonTaxable);
 
     this.tax = taxableSubtotal * (this.taxRate / 100);
