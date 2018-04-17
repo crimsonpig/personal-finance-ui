@@ -51,13 +51,11 @@ export class ReceiptSplitterComponent implements OnInit {
 
   addNewItem() {
     this.newReceiptItems.push(new ReceiptItem());
-    this.newItemsDataSource.data = this.newReceiptItems;
   }
 
   removeNewItem(itemToRemove: ReceiptItem) {
     const idx: number = this.newReceiptItems.indexOf(itemToRemove);
     this.newReceiptItems.splice(idx, 1);
-    this.newItemsDataSource.data = this.newReceiptItems;
   }
 
   calculate() {
