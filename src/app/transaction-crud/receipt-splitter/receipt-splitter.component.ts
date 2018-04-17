@@ -25,7 +25,18 @@ export class ReceiptSplitterComponent implements OnInit {
   checkTax: number = 0;
   checkTotal: number = 0;
 
-  newReceiptItems: ReceiptItem[] = [];
+  newReceiptItems: ReceiptItem[] = [
+
+    {category: 'FOOD', amount: 5.99, taxable: false},
+    {category: 'FOOD', amount: 3.99, taxable: false},
+    {category: 'ALCOHOL', amount: 6.99, taxable: true},
+    {category: 'CLEANING SUPPLIES', amount: 23.99, taxable: true},
+    {category: 'FOOD', amount: 4.11, taxable: false},
+    {category: 'FOOD', amount: 3.67, taxable: false},
+    {category: 'HOUSEHOLD', amount: 8.99, taxable: true},
+    {category: 'CLEANING SUPPLIES', amount: 7.99, taxable: true}
+
+  ];
   newItemsDataSource = new MatTableDataSource();
   outputItemsDataSource = new MatTableDataSource();
 
@@ -35,6 +46,7 @@ export class ReceiptSplitterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.newItemsDataSource.data = this.newReceiptItems;
   }
 
   addNewItem() {
@@ -53,7 +65,23 @@ export class ReceiptSplitterComponent implements OnInit {
     let taxableItems = new Map();
     const receiptItems: ReceiptItem[] = this.newReceiptItems;
     const sumFunction = (x: number, y: number) => x + y;
-    this.subtotal = receiptItems.map(item => new Number(item.amount).valueOf()).reduce(sumFunction, 0);
+
+    this.subtotal = this.totalReceiptItems(receiptItems);
+    const taxableItemsList = receiptItems.filter(item => item.taxable);
+    const nonTaxableItemsList = receiptItems.filter(item => !item.taxable);
+    
+    const taxableSubtotal = this.totalReceiptItems(taxableItemsList);
+    const nonTaxableSubtotal = this.totalReceiptItems(nonTaxableItemsList);
+
+    const percentTaxable = taxableSubtotal / this.subtotal;
+    const percentNonTaxable = nonTaxableSubtotal / this.subtotal;
+
+  }
+
+  private sumFunction = (x: number, y: number) => x + y;
+
+  private totalReceiptItems(items: ReceiptItem[]): number {
+    return items.map(item => new Number(item.amount).valueOf()).reduce(this.sumFunction, 0);
   }
 
   saveAll() {
