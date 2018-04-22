@@ -19,7 +19,7 @@ export class ReceiptSplitterComponent implements OnInit {
   @Input() taxRate: number = 7.25;
   tax: number = 0;
   taxableAmount: number = 0;
-  @Input() postTaxAddition: number = 0;
+  @Input() postTaxAddition: number = 5;
   total: number = 0;
 
   checkSubtotal: number = 0;
@@ -85,7 +85,9 @@ export class ReceiptSplitterComponent implements OnInit {
     
     this.total = taxableTotal + nonTaxableTotal;
 
-    console.log(this.tax);
+    const taxableCategories = new Set(taxableItemsList.map(item => item.category));
+    const nonTaxableCategories = new Set(nonTaxableItemsList.map(item => item.category));
+
   }
 
   private sumFunction = (x: number, y: number) => x + y;
