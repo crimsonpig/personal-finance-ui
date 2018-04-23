@@ -59,9 +59,10 @@ export class ReceiptSplitterComponent implements OnInit {
     this.newReceiptItems.splice(idx, 1);
   }
 
+  private sumFunction = (x: number, y: number) => x + y;
+
   calculate() {
-    let nonTaxableItems = new Map();
-    let taxableItems = new Map();
+
     const receiptItems: ReceiptItem[] = this.newReceiptItems;
     const sumFunction = (x: number, y: number) => x + y;
 
@@ -87,13 +88,32 @@ export class ReceiptSplitterComponent implements OnInit {
 
     const taxableCategories = new Set(taxableItemsList.map(item => item.category));
     const nonTaxableCategories = new Set(nonTaxableItemsList.map(item => item.category));
+    let taxableItems = this.groupReceiptItems(taxableItemsList, true);
+    let nonTaxableItems = this.groupReceiptItems(nonTaxableItemsList, false);
 
   }
 
-  private sumFunction = (x: number, y: number) => x + y;
-
   private totalReceiptItems(items: ReceiptItem[]): number {
     return items.map(item => new Number(item.amount).valueOf()).reduce(this.sumFunction, 0);
+  }
+
+  private groupReceiptItems(items: ReceiptItem[], taxable: boolean): ReceiptItem[] {
+    let groupedItems = new Map();
+    items.forEach((item) => {
+        const category = item.category;
+        const totaledItem = groupedItems.get(category);
+        if(!totaledItem){
+            let newTotaledItem = new ReceiptItem();
+            newTotaledItem.category = category;
+            newTotaledItem.amount = item.amount;
+            newTotaledItem.taxable = taxable;
+            groupedItems.set(category, newTotaledItem);
+        } else {
+           totaledItem.amount = totaledItem.amount + item.amount;
+           groupedItems.set(category, totaledItem);
+        }
+    });
+    return Array.from(groupedItems.values());
   }
 
   saveAll() {
