@@ -76,20 +76,28 @@ export class ReceiptSplitterComponent implements OnInit {
     const percentTaxable = taxableSubtotal / this.subtotal;
     const percentNonTaxable = nonTaxableSubtotal / this.subtotal;
 
-    this.taxableAmount = taxableSubtotal + (this.preTaxAddition * percentTaxable);
-    const nonTaxableWithPreTax = nonTaxableSubtotal + (this.preTaxAddition * percentNonTaxable);
-    const nonTaxableTotal = nonTaxableWithPreTax + (this.postTaxAddition * percentNonTaxable);
+
+    const nonTaxablePreTaxAddition = this.preTaxAddition * percentNonTaxable;
+    const nonTaxablePostTaxAddition = this.postTaxAddition * percentNonTaxable;
+    const nonTaxableAdditions = nonTaxablePreTaxAddition + nonTaxablePostTaxAddition;
+    const nonTaxableTotal = nonTaxableSubtotal + nonTaxableAdditions;
+
+    const taxablePreTaxAddition = this.preTaxAddition * percentTaxable;
+    this.taxableAmount = taxableSubtotal + taxablePreTaxAddition;
 
     this.tax = taxableSubtotal * (this.taxRate / 100);
     const taxableWithTax = this.taxableAmount + this.tax;
-    const taxableTotal = taxableWithTax + (this.postTaxAddition * percentTaxable);
-    
+    const taxablePostTaxAddition = this.postTaxAddition * percentTaxable;
+    const taxableAdditions = taxablePreTaxAddition + this.tax + taxablePostTaxAddition;
+    const taxableTotal = taxableSubtotal + taxableAdditions;
+
     this.total = taxableTotal + nonTaxableTotal;
 
     const taxableCategories = new Set(taxableItemsList.map(item => item.category));
     const nonTaxableCategories = new Set(nonTaxableItemsList.map(item => item.category));
     let taxableItems = this.groupReceiptItems(taxableItemsList, true);
     let nonTaxableItems = this.groupReceiptItems(nonTaxableItemsList, false);
+
 
   }
 
@@ -115,6 +123,7 @@ export class ReceiptSplitterComponent implements OnInit {
     });
     return Array.from(groupedItems.values());
   }
+
 
   saveAll() {
 
