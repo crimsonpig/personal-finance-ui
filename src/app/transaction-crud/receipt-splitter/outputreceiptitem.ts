@@ -1,6 +1,6 @@
 export class OutputReceiptItem {
     category: string;
     subtotal: number;
-    tax: number;
+    additions: number;
     total: number;
 }

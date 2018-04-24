@@ -69,9 +69,9 @@
 		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.subtotal}}</mat-cell>
 	</ng-container>
 
-	<ng-container matColumnDef="tax">
-		<mat-header-cell *matHeaderCellDef>Tax</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.tax}}</mat-cell>
+	<ng-container matColumnDef="additions">
+		<mat-header-cell *matHeaderCellDef>Additions</mat-header-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.additions}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="total">
@@ -87,7 +87,7 @@
 <button mat-raised-button color="primary" (click)="saveAll()">Save All</button>
 
 <div>Check Subtotal: {{checkSubtotal}} {{checkSubtotal == subtotal}}</div>
-<div>Check Tax: {{checkTax}} {{checkTax == tax}}</div>
+<div>Check Additions: {{checkAdditions}} {{assertCheckAdditions()}}</div>
 <div>Check Total: {{checkTotal}} {{checkTotal == total}}</div>
 
 

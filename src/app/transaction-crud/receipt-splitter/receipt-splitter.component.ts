@@ -23,7 +23,7 @@ export class ReceiptSplitterComponent implements OnInit {
   total: number = 0;
 
   checkSubtotal: number = 0;
-  checkTax: number = 0;
+  checkAdditions: number = 0;
   checkTotal: number = 0;
 
   newReceiptItems: ReceiptItem[] = [
@@ -42,7 +42,7 @@ export class ReceiptSplitterComponent implements OnInit {
   outputItemsDataSource = new MatTableDataSource();
 
   inputTableColumns = ['category', 'amount', 'taxable', 'remove'];
-  outputTableColumns = ['category', 'subtotal', 'tax', 'total'];
+  outputTableColumns = ['category', 'subtotal', 'additions', 'total'];
 
   constructor() { }
 
@@ -98,7 +98,15 @@ export class ReceiptSplitterComponent implements OnInit {
     let taxableItems = this.groupReceiptItems(taxableItemsList, true);
     let nonTaxableItems = this.groupReceiptItems(nonTaxableItemsList, false);
 
+    let taxableOutput = this.distributeAdditions(taxableItems, taxableSubtotal, taxableAdditions);
+    let nonTaxableOutput = this.distributeAdditions(nonTaxableItems, nonTaxableSubtotal, nonTaxableAdditions);
+    let output = taxableOutput.concat(nonTaxableOutput);
 
+    this.checkSubtotal = output.map(item => new Number(item.subtotal).valueOf()).reduce(this.sumFunction, 0)
+    this.checkAdditions = output.map(item => new Number(item.additions).valueOf()).reduce(this.sumFunction, 0)
+    this.checkTotal = output.map(item => new Number(item.total).valueOf()).reduce(this.sumFunction, 0)
+
+    this.outputItemsDataSource.data = output;    
   }
 
   private totalReceiptItems(items: ReceiptItem[]): number {
@@ -124,6 +132,22 @@ export class ReceiptSplitterComponent implements OnInit {
     return Array.from(groupedItems.values());
   }
 
+  private distributeAdditions(groupedItems: ReceiptItem[], groupedItemsSubtotal: number, amountToDistribute: number): OutputReceiptItem[] {
+    let outputs: OutputReceiptItem[] = [];
+    for(let item of groupedItems){
+        let output = new OutputReceiptItem();
+        output.category = item.category;
+        output.subtotal = item.amount;
+        output.additions = amountToDistribute * (item.amount / groupedItemsSubtotal);
+        output.total = output.subtotal + output.additions;
+        outputs.push(output);
+    }
+    return outputs;
+  }
+
+  assertCheckAdditions(){
+    return this.checkAdditions == (this.preTaxAddition + this.tax + this.postTaxAddition);
+  }
 
   saveAll() {
 
