@@ -84,8 +84,6 @@
 	<mat-row *matRowDef="let row; columns: outputTableColumns;"></mat-row> 
 </mat-table>
 
-<button mat-raised-button color="primary" (click)="saveAll()">Save All</button>
-
 <div>Check Subtotal: {{checkSubtotal}} {{checkSubtotal == subtotal}}</div>
 <div>Check Additions: {{checkAdditions}} {{assertCheckAdditions()}}</div>
 <div>Check Total: {{checkTotal}} {{checkTotal == total}}</div>

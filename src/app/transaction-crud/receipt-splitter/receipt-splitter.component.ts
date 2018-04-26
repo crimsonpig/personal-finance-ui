@@ -149,8 +149,4 @@ export class ReceiptSplitterComponent implements OnInit {
     return this.checkAdditions == (this.preTaxAddition + this.tax + this.postTaxAddition);
   }
 
-  saveAll() {
-
-  }
-
 }
