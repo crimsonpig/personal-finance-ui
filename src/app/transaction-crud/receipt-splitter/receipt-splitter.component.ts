@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { DecimalPipe } from '@angular/common';
+
 import { ReceiptItem } from './receiptitem';
 import { OutputReceiptItem } from './outputreceiptitem';
 
@@ -26,6 +28,8 @@ export class ReceiptSplitterComponent implements OnInit {
   checkAdditions: number = 0;
   checkTotal: number = 0;
 
+  constructor(private decimalPipe: DecimalPipe){}
+
   newReceiptItems: ReceiptItem[] = [
 
     {category: 'FOOD', amount: 5.99, taxable: false},
@@ -43,8 +47,6 @@ export class ReceiptSplitterComponent implements OnInit {
 
   inputTableColumns = ['category', 'amount', 'taxable', 'remove'];
   outputTableColumns = ['category', 'subtotal', 'additions', 'total'];
-
-  constructor() { }
 
   ngOnInit() {
     this.newItemsDataSource.data = this.newReceiptItems;
@@ -146,7 +148,7 @@ export class ReceiptSplitterComponent implements OnInit {
   }
 
   assertCheckAdditions(){
-    return this.checkAdditions == (this.preTaxAddition + this.tax + this.postTaxAddition);
+    return this.decimalPipe.transform(this.checkAdditions) == this.decimalPipe.transform(this.preTaxAddition + this.tax + this.postTaxAddition);
   }
 
 }

@@ -86,6 +86,6 @@
 
 <div>Check Subtotal: {{checkSubtotal | number:'1.2-2'}} {{checkSubtotal == subtotal}}</div>
 <div>Check Additions: {{checkAdditions | number:'1.2-2'}} {{assertCheckAdditions()}}</div>
-<div>Check Total: {{checkTotal | number:'1.2-2'}} {{checkTotal == total}}</div>
+<div>Check Total: {{checkTotal | number:'1.2-2'}} {{(checkTotal | number:'1.2-2') == (total | number:'1.2-2')}}</div>
 
 

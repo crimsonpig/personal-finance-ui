@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { DecimalPipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -39,7 +40,8 @@ import { ReceiptSplitterComponent } from './transaction-crud/receipt-splitter/re
   providers: [
     TransactionSummaryService,
     TransactionCrudService,
-    SearchService ],
+    SearchService,
+    DecimalPipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
