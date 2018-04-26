@@ -39,7 +39,7 @@
 </mat-table>
 
 <button mat-raised-button color="primary" (click)="calculate()">Calculate</button>
-<div>Subtotal: {{subtotal}}</div>
+<div>Subtotal: {{subtotal | number:'1.2-2'}}</div>
 <div>
 <label>Pre-Tax Addition</label>
 <input [(ngModel)]="preTaxAddition">
@@ -48,13 +48,13 @@
 <label>Tax Rate</label>
 <input [(ngModel)]="taxRate">
 </div>
-<div>Tax: {{tax}}</div>
-<div>Taxable Amount: {{taxableAmount}}</div>
+<div>Tax: {{tax | number:'1.2-2'}}</div>
+<div>Taxable Amount: {{taxableAmount | number:'1.2-2'}}</div>
 <div>
 <label>Post-Tax Addition</label>
 <input [(ngModel)]="postTaxAddition">
 </div>
-<div>Total: {{total}}</div>
+<div>Total: {{total | number:'1.2-2'}}</div>
 
 
 <mat-table [dataSource]="outputItemsDataSource">
@@ -66,17 +66,17 @@
 
 	<ng-container matColumnDef="subtotal">
 		<mat-header-cell *matHeaderCellDef>Subtotal</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.subtotal}}</mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.subtotal | number:'1.2-2'}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="additions">
 		<mat-header-cell *matHeaderCellDef>Additions</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.additions}}</mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.additions | number:'1.2-2'}}</mat-cell>
 	</ng-container>
 
 	<ng-container matColumnDef="total">
 		<mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
-		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.total}}</mat-cell>
+		<mat-cell *matCellDef="let outputReceiptItem">{{outputReceiptItem.total | number:'1.2-2'}}</mat-cell>
 	</ng-container>
 
 
@@ -84,8 +84,8 @@
 	<mat-row *matRowDef="let row; columns: outputTableColumns;"></mat-row> 
 </mat-table>
 
-<div>Check Subtotal: {{checkSubtotal}} {{checkSubtotal == subtotal}}</div>
-<div>Check Additions: {{checkAdditions}} {{assertCheckAdditions()}}</div>
-<div>Check Total: {{checkTotal}} {{checkTotal == total}}</div>
+<div>Check Subtotal: {{checkSubtotal | number:'1.2-2'}} {{checkSubtotal == subtotal}}</div>
+<div>Check Additions: {{checkAdditions | number:'1.2-2'}} {{assertCheckAdditions()}}</div>
+<div>Check Total: {{checkTotal | number:'1.2-2'}} {{checkTotal == total}}</div>
 
 
