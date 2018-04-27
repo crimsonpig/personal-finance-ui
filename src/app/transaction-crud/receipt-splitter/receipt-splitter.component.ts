@@ -30,18 +30,7 @@ export class ReceiptSplitterComponent implements OnInit {
 
   constructor(private decimalPipe: DecimalPipe){}
 
-  newReceiptItems: ReceiptItem[] = [
-
-    {category: 'FOOD', amount: 5.99, taxable: false},
-    {category: 'FOOD', amount: 3.99, taxable: false},
-    {category: 'ALCOHOL', amount: 6.99, taxable: true},
-    {category: 'CLEANING SUPPLIES', amount: 23.99, taxable: true},
-    {category: 'FOOD', amount: 4.11, taxable: false},
-    {category: 'FOOD', amount: 3.67, taxable: false},
-    {category: 'HOUSEHOLD', amount: 8.99, taxable: true},
-    {category: 'CLEANING SUPPLIES', amount: 7.99, taxable: true}
-
-  ];
+  newReceiptItems: ReceiptItem[] = [];
   newItemsDataSource = new MatTableDataSource();
   outputItemsDataSource = new MatTableDataSource();
 
