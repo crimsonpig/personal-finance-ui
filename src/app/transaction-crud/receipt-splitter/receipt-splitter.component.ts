@@ -21,7 +21,7 @@ export class ReceiptSplitterComponent implements OnInit {
   @Input() taxRate: number = 7.25;
   tax: number = 0;
   taxableAmount: number = 0;
-  @Input() postTaxAddition: number = 5;
+  @Input() postTaxAddition: number = 0;
   total: number = 0;
 
   checkSubtotal: number = 0;
@@ -43,11 +43,13 @@ export class ReceiptSplitterComponent implements OnInit {
 
   addNewItem() {
     this.newReceiptItems.push(new ReceiptItem());
+    this.newItemsDataSource.data = this.newReceiptItems;
   }
 
   removeNewItem(itemToRemove: ReceiptItem) {
     const idx: number = this.newReceiptItems.indexOf(itemToRemove);
     this.newReceiptItems.splice(idx, 1);
+    this.newItemsDataSource.data = this.newReceiptItems;
   }
 
   private sumFunction = (x: number, y: number) => x + y;
