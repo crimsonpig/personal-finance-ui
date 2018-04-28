@@ -86,8 +86,6 @@ export class ReceiptSplitterComponent implements OnInit {
 
     this.total = taxableTotal + nonTaxableTotal;
 
-    const taxableCategories = new Set(taxableItemsList.map(item => item.category));
-    const nonTaxableCategories = new Set(nonTaxableItemsList.map(item => item.category));
     let taxableItems = this.groupReceiptItems(taxableItemsList, true);
     let nonTaxableItems = this.groupReceiptItems(nonTaxableItemsList, false);
 
