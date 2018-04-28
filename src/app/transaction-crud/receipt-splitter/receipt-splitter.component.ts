@@ -112,11 +112,11 @@ export class ReceiptSplitterComponent implements OnInit {
         if(!totaledItem){
             let newTotaledItem = new ReceiptItem();
             newTotaledItem.category = category;
-            newTotaledItem.amount = item.amount;
+            newTotaledItem.amount = new Number(item.amount).valueOf();
             newTotaledItem.taxable = taxable;
             groupedItems.set(category, newTotaledItem);
         } else {
-           totaledItem.amount = totaledItem.amount + item.amount;
+           totaledItem.amount = totaledItem.amount + new Number(item.amount).valueOf();
            groupedItems.set(category, totaledItem);
         }
     });
