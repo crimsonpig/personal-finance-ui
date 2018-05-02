@@ -84,7 +84,7 @@
 	<mat-row *matRowDef="let row; columns: outputTableColumns;"></mat-row> 
 </mat-table>
 
-<div>Check Subtotal: {{checkSubtotal | number:'1.2-2'}} {{checkSubtotal == subtotal}}</div>
+<div>Check Subtotal: {{checkSubtotal | number:'1.2-2'}} {{(checkSubtotal | number:'1.2-2') == (subtotal | number:'1.2-2')}}</div>
 <div>Check Additions: {{checkAdditions | number:'1.2-2'}} {{assertCheckAdditions()}}</div>
 <div>Check Total: {{checkTotal | number:'1.2-2'}} {{(checkTotal | number:'1.2-2') == (total | number:'1.2-2')}}</div>
 
