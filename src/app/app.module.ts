@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DecimalPipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -41,7 +42,8 @@ import { ReceiptSplitterComponent } from './transaction-crud/receipt-splitter/re
     TransactionSummaryService,
     TransactionCrudService,
     SearchService,
-    DecimalPipe ],
+    DecimalPipe,
+    UpperCasePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

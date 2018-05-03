@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { DecimalPipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 
 import { ReceiptItem } from './receiptitem';
 import { OutputReceiptItem } from './outputreceiptitem';
@@ -28,7 +29,7 @@ export class ReceiptSplitterComponent implements OnInit {
   checkAdditions: number = 0;
   checkTotal: number = 0;
 
-  constructor(private decimalPipe: DecimalPipe){}
+  constructor(private decimalPipe: DecimalPipe, private uppercasePipe: UpperCasePipe){}
 
   newReceiptItems: ReceiptItem[] = [];
   newItemsDataSource = new MatTableDataSource();
@@ -109,7 +110,7 @@ export class ReceiptSplitterComponent implements OnInit {
   private groupReceiptItems(items: ReceiptItem[], taxable: boolean): ReceiptItem[] {
     let groupedItems = new Map();
     items.forEach((item) => {
-        const category = item.category;
+        const category = this.uppercasePipe.transform(item.category);
         const totaledItem = groupedItems.get(category);
         if(!totaledItem){
             let newTotaledItem = new ReceiptItem();
@@ -139,7 +140,9 @@ export class ReceiptSplitterComponent implements OnInit {
   }
 
   assertCheckAdditions(){
-    return this.decimalPipe.transform(this.checkAdditions) == this.decimalPipe.transform(this.preTaxAddition + this.tax + this.postTaxAddition);
+    const thisCheckAdditions = this.decimalPipe.transform(this.checkAdditions);
+    const additions = this.decimalPipe.transform(this.preTaxAddition + this.tax + this.postTaxAddition);
+    return thisCheckAdditions == additions;
   }
 
 }
