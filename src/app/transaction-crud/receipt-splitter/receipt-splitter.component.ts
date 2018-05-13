@@ -110,7 +110,7 @@ export class ReceiptSplitterComponent implements OnInit {
   private groupReceiptItems(items: ReceiptItem[], taxable: boolean): ReceiptItem[] {
     let groupedItems = new Map();
     items.forEach((item) => {
-        const category = this.uppercasePipe.transform(item.category);
+        const category = this.uppercasePipe.transform(item.category.trim());
         const totaledItem = groupedItems.get(category);
         if(!totaledItem){
             let newTotaledItem = new ReceiptItem();
