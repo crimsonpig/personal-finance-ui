@@ -38,19 +38,23 @@ export class ReceiptSplitterComponent implements OnInit {
   inputTableColumns = ['category', 'amount', 'taxable', 'remove'];
   outputTableColumns = ['category', 'subtotal', 'additions', 'total'];
 
-  ngOnInit() {
+  refreshNewReceiptItems(){
     this.newItemsDataSource.data = this.newReceiptItems;
+  }
+
+  ngOnInit() {
+    this.refreshNewReceiptItems();
   }
 
   addNewItem() {
     this.newReceiptItems.push(new ReceiptItem());
-    this.newItemsDataSource.data = this.newReceiptItems;
+    this.refreshNewReceiptItems();
   }
 
   removeNewItem(itemToRemove: ReceiptItem) {
     const idx: number = this.newReceiptItems.indexOf(itemToRemove);
     this.newReceiptItems.splice(idx, 1);
-    this.newItemsDataSource.data = this.newReceiptItems;
+    this.refreshNewReceiptItems();
   }
 
   private sumFunction = (x: number, y: number) => x + y;
@@ -143,6 +147,11 @@ export class ReceiptSplitterComponent implements OnInit {
     const thisCheckAdditions = this.decimalPipe.transform(this.checkAdditions);
     const additions = this.decimalPipe.transform(this.preTaxAddition + this.tax + this.postTaxAddition);
     return thisCheckAdditions == additions;
+  }
+
+  clearInputItems(){
+    this.newReceiptItems = [];
+    this.refreshNewReceiptItems();
   }
 
 }
