@@ -154,4 +154,8 @@ export class ReceiptSplitterComponent implements OnInit {
     this.refreshNewReceiptItems();
   }
 
+  clearOutputItems(){
+    this.outputItemsDataSource.data = [];
+  }
+
 }
