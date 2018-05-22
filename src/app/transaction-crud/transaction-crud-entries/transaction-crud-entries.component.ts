@@ -31,10 +31,6 @@ export class TransactionCrudEntriesComponent {
     this.dataSource!.sort = this.sort;
   }
 
-  refreshTransactionItems(){
-    this.dataSource.data = this.transactionItems;
-  }
-
   addNewItem() {
     this.newTransactionItems.push(new TransactionItem());
     this.newItemsDataSource.data = this.newTransactionItems;
@@ -42,14 +38,14 @@ export class TransactionCrudEntriesComponent {
 
   setTransactionItems(tItems: TransactionItem[]) {
     this.transactionItems = tItems;
-    this.refreshTransactionItems();
+    this.dataSource.data = this.transactionItems;
   }
 
   saveNewItem(itemToSave: TransactionItem) {
     itemToSave.tType = this.tType;
     this.transactionCrudService.saveNewTransaction(itemToSave).then(persistedTransaction => {
       this.transactionItems.push(persistedTransaction);
-      this.refreshTransactionItems();
+      this.dataSource.data = this.transactionItems;
       this.removeNewItem(itemToSave);
     });
   }
@@ -57,7 +53,7 @@ export class TransactionCrudEntriesComponent {
   removeNewItem(itemToRemove: TransactionItem) {
     const idx: number = this.newTransactionItems.indexOf(itemToRemove);
     this.newTransactionItems.splice(idx, 1);
-    this.refreshTransactionItems();
+    this.newItemsDataSource.data = this.newTransactionItems;
   }
 
   removeExistingItem(itemToRemove: TransactionItem) {
@@ -65,7 +61,7 @@ export class TransactionCrudEntriesComponent {
       this.transactionCrudService.deleteTransaction(itemToRemove).then(deletedTransaction => {
         const idx: number = this.transactionItems.indexOf(itemToRemove);
         this.transactionItems.splice(idx, 1);
-        this.refreshTransactionItems();
+        this.dataSource.data = this.transactionItems;
       });
     }
   }
