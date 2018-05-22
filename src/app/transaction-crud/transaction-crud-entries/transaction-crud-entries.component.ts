@@ -22,8 +22,6 @@ export class TransactionCrudEntriesComponent {
 
   dataSource = new MatTableDataSource();
   newItemsDataSource = new MatTableDataSource();
-
-  private sumFunction = (x: number, y: number) => x + y;
   
   @ViewChild(MatSort) sort: MatSort;
 
@@ -70,10 +68,6 @@ export class TransactionCrudEntriesComponent {
         this.refreshTransactionItems();
       });
     }
-  }
-
-  parentCategoryTotal(): number {
-    return this.transactionItems.map(item => item.amount).reduce(this.sumFunction, 0);
   }
 
 }
